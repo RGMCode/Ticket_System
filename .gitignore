@@ -18,4 +18,3 @@
 /frontend/dist-ssr
 /frontend/*.local
 /frontend/.gitignore
-/frontend/.frontend.iml

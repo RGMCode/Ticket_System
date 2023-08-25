@@ -2,8 +2,9 @@ package de.rgmcode.backend.Ticket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -12,5 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TicketController {
 
     private final TicketService ticketService;
+
+    @GetMapping
+    public List<Ticket> getAllTickets() {
+        return ticketService.getAllTickets();
+    }
+
+    @PostMapping
+    public Ticket addTicket(@RequestBody Ticket ticket) {
+        return ticketService.addTicket(ticket);
+    }
+
+
+
 
 }

@@ -11,23 +11,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("User")
 public class User {
 
-    private String id;                      // ID
-    private String userUUID;                // Unique ID
+    private String id;
+    private String userUUID;
 
-    private String registrationDate;        // Registrierungs Datum (Serverzeit)
-    private String registrationTime;        // Registrierungs Uhrzeit (Serverzeit)
+    private String userRegistrationDate;
+    private String userRegistrationTime;
 
-    private String title;                   // Dr. Prof. usw. ...
-    private String salutation;              // Herr oder Frau oder x
-    private String customerLastName;        // Nachname des Kundens
-    private String customerFirstName;       // Vorname des Kundens
-    private String customerTelefonnumber;   // Kunden Telefon
-    private String customerEMail;           // Kunden-EMail
+    private String userTitle;
+    private String userSalutation;
+    private String userLastName;
+    private String userFirstName;
 
-    private String customerDepartment;      // Abteilung des Kundens
+    private String userDepartment;
+    private String userLocation;
+    private String userBuilding;
+    private String userRoom;
 
-    private String role;                    // Mitarbeiter, Fachmitarbeiter, Admin
+    private String userPhoneNumber;
+    private String userEMail;
 
-    private String password;                // User Password
+    private String userLoginName;
+    private String userPassword;
+
+    private String userRole;
 
 }

@@ -24,9 +24,9 @@ public class UserService {
     public User addNewUser(User user) {
         Date now = new Date();
         String currentDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(now);
-        user.setRegistrationDate(currentDate);
+        user.setUserRegistrationDate(currentDate);
         String currentTime = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(now);
-        user.setRegistrationTime(currentTime);
+        user.setUserRegistrationTime(currentTime);
         userRepository.save(user.withId(idService.generateUserMaxID())
                                 .withUserUUID(idService.generateUserUUID())
         );

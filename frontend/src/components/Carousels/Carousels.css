@@ -1,0 +1,23 @@
+
+
+.carousel-image {
+    width: 100% !important;
+    height: 500px !important;
+    object-fit: cover !important;
+    /*border-radius: 35px;*/
+}
+
+.carousel-caption {
+    bottom: 10%;
+    background-color: rgba(30, 30, 30, 0.7);  /* optional: um den Text besser lesbar zu machen */
+    /*padding: 10px;*/
+    border-radius: 250px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #b0cd4d;  /* Ändern Sie dies in die gewünschte Farbe */
+    border-radius: 100%;
+}
+
+

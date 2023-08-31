@@ -1,20 +1,19 @@
 import './App.css'
 import {Route, Routes} from "react-router-dom";
 import Homepage from "./Pages/Homepage/Homepage.tsx";
-import LoginPage from "./Pages/LoginPage/LoginPage.tsx";
-import {useState} from "react";
-import RegisterPage from "./Pages/RegisterPage/RegisterPage.tsx";
+import Home from "./Pages/Home/Home.tsx";
+import News from "./Pages/News/News.tsx";
+import TicketOverview from "./Pages/TicketOverview/TicketOverview.tsx";
 
 function App() {
-
-    const [user, setUser] = useState("")
 
     return (
         <>
             <Routes>
                 <Route path={"/"} element={<Homepage/>}/>
-                <Route path={"/login"} element={<LoginPage setUser={setUser}/>}/>
-                <Route path={'/register'} element={<RegisterPage/>}/>
+                <Route path={'/home'} element={<Home/>}/>
+                <Route path={'/news'} element={<News/>}/>
+                <Route path={'/ticketoverview'} element={<TicketOverview/>}/>
             </Routes>
         </>
     );

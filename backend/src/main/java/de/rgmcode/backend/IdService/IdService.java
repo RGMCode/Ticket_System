@@ -15,10 +15,15 @@ import java.util.UUID;
 @Service
 public class IdService {
 
-    private TicketRepository ticketRepository;
-    private UserRepository userRepository;
+    private final TicketRepository ticketRepository;
+    private final UserRepository userRepository;
     private Ticket ticket;
     private User user;
+
+    public IdService(TicketRepository ticketRepository, UserRepository userRepository) {
+        this.ticketRepository = ticketRepository;
+        this.userRepository = userRepository;
+    }
 
     public String generateTicketUUID() {
         return UUID.randomUUID().toString();

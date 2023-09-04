@@ -1,9 +1,10 @@
+import './TicketOverview.css'
 import Navigationbar from "../../components/Navigationbar/Navigationbar.tsx";
 import {Button, Table} from "react-bootstrap";
 import {ChangeEvent, useEffect, useState} from "react";
 import axios from "axios";
 import ModalCreateTicket from "../../components/ModalCeateTicket/ModalCreateTicket.tsx";
-import ModalShowTicket from "../../components/ModalShowTicket/ModalShowTicket.tsx";
+import ModalTicketDetails from "../../components/ModalTicketDetails/ModalTicketDetails.tsx";
 
 export type TicketData = {
     "id": string,
@@ -110,21 +111,21 @@ export default function TicketOverview() {
         const [showTicketDetails, setShowTicketDetails] = useState(false)
         return (
             <tr>
-                <td>{props.ticket.id}</td>
-                <td>{props.ticket.ticketDate} | {props.ticket.ticketTime} Uhr</td>
+                <td id={"w100"} >{props.ticket.id}</td>
+                <td id={"w220"} >{props.ticket.ticketDate} | {props.ticket.ticketTime} Uhr</td>
                 <td>{props.ticket.customerHeadline}</td>
                 <td>{props.user.userDepartment}</td>
-                <td>{props.user.userSalutation}</td>
+                <td id={"w100"} >{props.user.userSalutation}</td>
                 <td>{props.user.userLastName}</td>
                 <td>{props.user.userFirstName}</td>
-                {/*<td>{props.ticket.processingEmployeeLastName}, {props.ticket.processingEmployeeFirstName}</td>*/}
                 <td>
-                    <Button variant="outline-primary" onClick={() => setShowTicketDetails(true)}>Show</Button>
-                    <ModalShowTicket
+                    <Button style={{height:'35px'}} variant="outline-primary" onClick={() => setShowTicketDetails(true)}>details</Button>
+                    <ModalTicketDetails
                         onHide={() => setShowTicketDetails(false)}
                         show={showTicketDetails}
                         ticketDetails={props.ticket}
                         userDetails={props.user}
+                        userID={props.user.id}
                     />
                 </td>
             </tr>
@@ -136,7 +137,7 @@ export default function TicketOverview() {
     return (
         <div>
             <Navigationbar/>
-            <h1>TicketOverview</h1>
+            {/*<h1>TicketOverview</h1>*/}
             <div>
                 <Button style={{width:'150px', height:'50px'}} variant="success"
                         onClick={() => setCreateTicketModal(true)}>
@@ -145,18 +146,17 @@ export default function TicketOverview() {
                 <ModalCreateTicket onHide={() => setCreateTicketModal(false)} show={createTicketModal} setTickets={setTickets}/>
             </div>
             <div>
-                <Table striped bordered hover variant="light">
+                <Table striped bordered hover variant="light" >
                     <thead>
                     <tr>
-                        <th>Ticket-ID</th>
-                        <th>Datum & Uhrzeit</th>
-                        <th>Problem</th>
-                        <th>Abteilung</th>
-                        <th>Anrede</th>
-                        <th>Last Name</th>
-                        <th>First Name</th>
-                        {/*<th>Bearbeiter</th>*/}
-                        <th>Details</th>
+                        <th id={"w100"} >Ticket-ID</th>
+                        <th id={"w220"} >Datum & Uhrzeit</th>
+                        <th id={"wauto"} >Problem</th>
+                        <th id={"w220"} >Abteilung</th>
+                        <th id={"w100"} >Anrede</th>
+                        <th id={"wauto"} >Last Name</th>
+                        <th id={"wauto"} >First Name</th>
+                        <th id={"w100"} >Details</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -177,16 +177,17 @@ export default function TicketOverview() {
                 <div className="flex-container">
                     <div className={"ticket-footer"}>
                         <div className="pagination">
-                            {currentPage > 1 && <button onClick={prevPage}>Vorherige</button>}
+                            {currentPage > 1 && <Button variant={"primary"} onClick={prevPage}>Vorherige</Button>}
                             <span>Seite {currentPage} | Zeigt Tickets {indexOfFirstTicket + 1} - {Math.min(indexOfLastTicket, tickets.length)} von {tickets.length}</span>
-                            {currentTickets.length === ticketsPerPage && <button onClick={nextPage}>Nächste</button>}
+                            {currentTickets.length === ticketsPerPage && <Button variant={"primary"} onClick={nextPage}>Nächste</Button>}
                         </div>
                         <div>
                             <label>Anzeigen: </label>
                             <select onChange={handleDropdownChange}>
-                                <option value="10">10</option>
                                 <option value="20">20</option>
-                                <option value="50">50</option>
+                                <option value="40">40</option>
+                                <option value="60">60</option>
+                                <option value="80">80</option>
                                 <option value="100">100</option>
                                 <option value="all">Alle</option>
                             </select>

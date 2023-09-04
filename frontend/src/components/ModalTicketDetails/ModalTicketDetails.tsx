@@ -2,15 +2,15 @@ import {Col, Form, Modal} from "react-bootstrap";
 import {TicketData, UserData} from "../../Pages/TicketOverview/TicketOverview.tsx";
 import Row from 'react-bootstrap/Row';
 
-
 type ModalTicketDetails = {
     onHide: () => void;
     show: boolean;
     ticketDetails: TicketData;
     userDetails: UserData;
+    userID: string;
 }
 
-export default function ModalShowTicket(props: ModalTicketDetails) {
+export default function ModalTicketDetails(props: ModalTicketDetails) {
     return (
         <div>
             <Modal
@@ -21,8 +21,7 @@ export default function ModalShowTicket(props: ModalTicketDetails) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        <h1>Ticket Details</h1>
-                        <h2>{props.ticketDetails.id}</h2>
+                        <h1>Ticket Details - {props.ticketDetails.id}</h1>
                     </Modal.Title>
                 </Modal.Header>
 
@@ -139,10 +138,6 @@ export default function ModalShowTicket(props: ModalTicketDetails) {
                                               />
                             </Row>
                         </Form.Group>
-
-
-                        {/*<FormLabel>bearbeiter:</FormLabel>*/}
-                        {/*<FormLabel>{props.ticketDetails.processingEmployeeLastName}, {props.ticketDetails.processingEmployeeFirstName}</FormLabel>*/}
 
                     </Form>
                 </Modal.Body>

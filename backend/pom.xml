@@ -25,26 +25,25 @@
             <version>2.0.0</version>
         </dependency>
 
-<!--        Security-->
-<!--        Security-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+<!--    Security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
-<!--        Security for Tests-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+<!--    Security for Tests-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-<!--        Kryptographie-->
-<!--        <dependency>-->
-<!--            <groupId>org.bouncycastle</groupId>-->
-<!--            <artifactId>bcprov-jdk15on</artifactId>-->
-<!--            <version>1.70</version>-->
-<!--        </dependency>-->
+<!--    Kryptographie-->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.70</version>
+        </dependency>
 
 <!--    MongoDB-->
         <dependency>

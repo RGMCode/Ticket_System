@@ -1,15 +1,13 @@
-import {Navigate, Outlet} from "react-router-dom";
 
-type Props = {
-    user: string
-}
+import { useUser } from '../../UserContext';
+import {Outlet} from "react-router-dom";
 
-export default function ProtectedRoute(props:Props) {
+export default function ProtectedRoute() {
+    const { user } = useUser();
 
-    const authenticated:boolean = props.user !== undefined && props.user !== "anonymousUser" && props.user !== ""
+    if (!user) {
+        return 'Sie sind nicht angemeldet.';
+    }
 
-    return(
-        authenticated ? <Outlet/> : <Navigate to={"/"}/>
-    );
-
+    return <Outlet />;
 }

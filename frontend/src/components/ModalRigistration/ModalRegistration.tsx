@@ -4,12 +4,12 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import Row from "react-bootstrap/Row";
 
-type ModalReg = {
+type ModalRegProps = {
     onHide: () => void;
     show: boolean;
 }
 
-export default function ModalLogin(props: ModalReg) {
+export default function ModalLogin(props: ModalRegProps) {
 
     const [userTitel, setUserTitel] = useState("")
     const [userSalutation, setUserSalutation] = useState("")

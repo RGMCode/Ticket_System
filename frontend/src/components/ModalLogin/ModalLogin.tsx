@@ -1,7 +1,8 @@
-import {Button, Form, FormLabel, Modal} from "react-bootstrap";
+import {Button, Col, Form, Modal} from "react-bootstrap";
 import {ChangeEvent, FormEvent, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Row from "react-bootstrap/Row";
 
 
 type ModalLoginType = {
@@ -10,36 +11,65 @@ type ModalLoginType = {
     setUser: (user:string) => void
 }
 
-export default function ModalLogin(props: ModalLoginType) {
+export default function ModalLogin({onHide, show, setUser}: ModalLoginType) {
 
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [userLoginName, setUserLoginName] = useState("");
+    const [userPassword, setUserPassword] = useState("");
     const nav = useNavigate()
 
-    function onChangeHandlerUsername(event:ChangeEvent<HTMLInputElement>){
-        setUsername(event.target.value)
+    function onChangeHandlerUsernamLoginName(event:ChangeEvent<HTMLInputElement>){
+        setUserLoginName(event.target.value)
     }
 
-    function onChnageHandlerPassword(event:ChangeEvent<HTMLInputElement>){
-        setPassword(event.target.value)
+    function onChnageHandlerUserPassword(event:ChangeEvent<HTMLInputElement>){
+        setUserPassword(event.target.value)
     }
 
-    function login(event:FormEvent<HTMLFormElement>){
+
+    // function login(event:FormEvent<HTMLFormElement>){
+    //     event.preventDefault();
+    //     axios.post("/api/user/login", undefined, {auth: {username: userLoginName, password: userPassword}})
+    //         .then((response) => {
+    //             props.setUser(response.data);
+    //             console.log("User: " , response.data)
+    //             props.onHide();
+    //             nav("/home");
+    //         })
+    //         .then(() => {
+    //             console.log("navigate to /home")
+    //             // nav("/home");
+    //         })
+    //         .catch((error) => console.log(error));
+    // }
+
+    async function login(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        axios.post("/api/user/login", undefined, {auth: {username, password}})
-            .then((response) => props.setUser(response.data))
-            .then(() => nav("/home"))
-            .catch((error) => console.log(error));
+        try {
+            const response = await axios.post("/api/user/login", undefined, {auth: {username: userLoginName, password: userPassword}});
+            setUser(response.data);
+            console.log("User: ", response.data)
+            onHide();
+            nav("/home");
+            console.log("navigate to /home")
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return(
         <div>
             <Modal
-                {...props}
+
+                // size="lg"
+                // aria-labelledby="contained-modal-title-vcenter"
+                // centered
+                onHide={onHide}
+                show={show}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
+
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -49,17 +79,26 @@ export default function ModalLogin(props: ModalLoginType) {
 
                 <Modal.Body>
                     <Form onSubmit={login}>
-                        <FormLabel>Loginname:</FormLabel>
-                        <input type={"text"} id={"username"} required={true} onChange={onChangeHandlerUsername}/>
-                        <br/>
-                        <FormLabel>Passwort:</FormLabel>
-                        <input type={"password"} id={"password"} required={true} onChange={onChnageHandlerPassword}/>
-                        <br/>
-                        <Button variant={"success"}>login</Button>
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                            <Row>
+                                <Col>
+                                    <Form.Label column sm="2">
+                                        Loginname:
+                                    </Form.Label>
+                                    <input type="text" id={"userDepartment"} required={true} onChange={onChangeHandlerUsernamLoginName}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label column sm="2">
+                                        Password:
+                                    </Form.Label>
+                                    <input type="text" id={"userRoom"} required={true} onChange={onChnageHandlerUserPassword}/>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        <Button type={"submit"} variant={"success"}>login</Button>
                     </Form>
-                    {/*<p>*/}
-                    {/*    falls Sie noch keine Logindaten haben registrieren sich sich bitte hier.*/}
-                    {/*</p>*/}
                 </Modal.Body>
 
                 {/*<Modal.Footer>*/}

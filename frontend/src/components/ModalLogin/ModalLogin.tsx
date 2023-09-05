@@ -1,111 +1,60 @@
-import {Button, Col, Form, Modal} from "react-bootstrap";
-import {ChangeEvent, FormEvent, useState} from "react";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
-import Row from "react-bootstrap/Row";
 
+import { useState, FormEvent, ChangeEvent } from 'react';
+import { Modal, Form, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../UserContext.tsx';
 
-type ModalLoginType = {
+type ModalLoginProps = {
     onHide: () => void;
     show: boolean;
-    setUser: (user:string) => void
-}
+};
 
-export default function ModalLogin({onHide, show, setUser}: ModalLoginType) {
+export default function ModalLogin({ onHide, show }: ModalLoginProps) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-
-    const [userLoginName, setUserLoginName] = useState("");
-    const [userPassword, setUserPassword] = useState("");
-    const nav = useNavigate()
-
-    function onChangeHandlerUsernamLoginName(event:ChangeEvent<HTMLInputElement>){
-        setUserLoginName(event.target.value)
-    }
-
-    function onChnageHandlerUserPassword(event:ChangeEvent<HTMLInputElement>){
-        setUserPassword(event.target.value)
-    }
-
-
-    // function login(event:FormEvent<HTMLFormElement>){
-    //     event.preventDefault();
-    //     axios.post("/api/user/login", undefined, {auth: {username: userLoginName, password: userPassword}})
-    //         .then((response) => {
-    //             props.setUser(response.data);
-    //             console.log("User: " , response.data)
-    //             props.onHide();
-    //             nav("/home");
-    //         })
-    //         .then(() => {
-    //             console.log("navigate to /home")
-    //             // nav("/home");
-    //         })
-    //         .catch((error) => console.log(error));
-    // }
-
-    async function login(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
+    const { setUser } = useUser();
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
         try {
-            const response = await axios.post("/api/user/login", undefined, {auth: {username: userLoginName, password: userPassword}});
-            setUser(response.data);
-            console.log("User: ", response.data)
-            onHide();
-            nav("/home");
-            console.log("navigate to /home")
+            const response = await axios.post('/api/user/login', {}, { auth: { username, password } });
+            if (response.data) {
+                setUser(username); // oder setUser(response.data), je nachdem was Ihre API zurückgibt
+                console.log("username: ", username)
+                console.log("ModalLogin-response.data: ", response.data)
+                navigate('/home');
+            }
         } catch (error) {
-            console.log(error);
+            console.log('Login failed:', error);
         }
-    }
+    };
 
-    return(
-        <div>
-            <Modal
-
-                // size="lg"
-                // aria-labelledby="contained-modal-title-vcenter"
-                // centered
-                onHide={onHide}
-                show={show}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        <h1>Login</h1>
-                    </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    <Form onSubmit={login}>
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                            <Row>
-                                <Col>
-                                    <Form.Label column sm="2">
-                                        Loginname:
-                                    </Form.Label>
-                                    <input type="text" id={"userDepartment"} required={true} onChange={onChangeHandlerUsernamLoginName}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Label column sm="2">
-                                        Password:
-                                    </Form.Label>
-                                    <input type="text" id={"userRoom"} required={true} onChange={onChnageHandlerUserPassword}/>
-                                </Col>
-                            </Row>
-                        </Form.Group>
-                        <Button type={"submit"} variant={"success"}>login</Button>
-                    </Form>
-                </Modal.Body>
-
-                {/*<Modal.Footer>*/}
-                {/*    <Button onClick={props.onHide}>Close</Button>*/}
-                {/*</Modal.Footer>*/}
-            </Modal>
-        </div>
+    return (
+        <Modal
+            onHide={onHide}
+            show={show}
+            aria-labelledby="contained-modal-title-vcenter"
+            size={'sm'}
+            centered>
+            <Modal.Header closeButton>
+                <Modal.Title>Login</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formUsername">
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control type="text" onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
+                    </Form.Group>
+                    <Form.Group controlId="formPassword">
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control type="password" onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
+                    </Form.Group>
+                    <Button type="submit">Login</Button>
+                </Form>
+            </Modal.Body>
+        </Modal>
     );
-
 }
+

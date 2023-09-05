@@ -7,34 +7,26 @@ import ModalRegistration from '../../components/ModalRigistration/ModalRegistrat
 // import Navigationbar from "../../components/Navigationbar/Navigationbar.tsx";
 
 export default function Homepage() {
-
     const [loginModal, setLoginModal] = useState(false);
     const [registrationModal, setRegistrationModal] = useState(false)
 
-    const [user, setUser] = useState("")
-
-
     return (
         <div>
+            <Carousels/>
             <div>
-                {/*<Navigationbar/>*/}
-                <Carousels/>
                 <div>
-                    <div>
-                        <Button style={{marginTop: '25px', width:'120px'}} variant="outline-info"
+                    <Button style={{marginTop: '25px', width: '120px'}} variant="outline-info"
                             onClick={() => setLoginModal(true)}>
-                            login
-                        </Button>
-                        <ModalLogin onHide={() => setLoginModal(false)} show={loginModal} setUser={setUser}/>
-                    </div>
-                    <div>
-                        <Button style={{marginTop: '25px', width:'120px'}} variant="outline-info"
-                                onClick={() => setRegistrationModal(true)}>
-                            registrieren
-                        </Button>
-                        <ModalRegistration onHide={() => setRegistrationModal(false)} show={registrationModal}/>
-                    </div>
-
+                        Login
+                    </Button>
+                    <ModalLogin onHide={() => setLoginModal(false)} show={loginModal}/>
+                </div>
+                <div>
+                    <Button style={{marginTop: '25px', width: '120px'}} variant="outline-info"
+                            onClick={() => setRegistrationModal(true)}>
+                        registrieren
+                    </Button>
+                    <ModalRegistration onHide={() => setRegistrationModal(false)} show={registrationModal}/>
                 </div>
             </div>
         </div>

@@ -1,27 +1,9 @@
-// import { createContext, useContext, useState } from 'react';
-//
-// const UserContext = createContext(null);
-//
-// export const useUser = () => {
-//     return useContext(UserContext);
-// };
-//
-// export const UserProvider = ({ children }) => {
-//     const [user, setUser] = useState(null);
-//     const value = {
-//         user,
-//         setUser,
-//     };
-//
-//     return <UserContext.Provider value={value}> {children} </UserContext.Provider>;
-// };
 
-
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import {createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, FC} from 'react';
 
 interface UserContextProps {
     user: string | null;
-    setUser: React.Dispatch<React.SetStateAction<string | null>>;
+    setUser: Dispatch<SetStateAction<string | null>>;
 }
 
 const UserContext = createContext<UserContextProps | null>(null);
@@ -38,7 +20,7 @@ export const useUser = () => {
     return context;
 };
 
-export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
+export const UserProvider: FC<UserProviderProps> = ({ children }) => {
     const [user, setUser] = useState<string | null>(null);
     const value = {
         user,

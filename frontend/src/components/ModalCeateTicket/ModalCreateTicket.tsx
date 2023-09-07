@@ -1,8 +1,8 @@
 import {Button, Col, Form, Modal} from "react-bootstrap";
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import {TicketData} from "../../Pages/TicketOverview/TicketOverview.tsx"
+import {TicketData, UserData} from "../../Pages/TicketOverview/TicketOverview.tsx"
 import Row from "react-bootstrap/Row";
 
 type ModalCreate = {
@@ -13,8 +13,42 @@ type ModalCreate = {
 
 export default function ModalCreateTicket(props: ModalCreate) {
 
-    const [userTitel, setUserTitel] = useState("")
-    const [userSalutation, setUserSalutation] = useState("")
+    const [userData, setUserData] = useState<UserData | null>(null);
+    const [userLoginname, setUserLoginname] = useState<UserData>()
+
+    async function getUserData() {
+        try {
+            // Erste Anfrage
+            const response = await axios({
+                method: "get",
+                url: "http://localhost:5173/api/user/me2",
+            });
+            // userLoginname = response.data;
+            setUserLoginname(response.data);
+            // Zweite Anfrage
+            const res = await axios({
+                method: 'get',
+                url: `http://localhost:5173/api/user/user/${userLoginname}`,
+            });
+            setUserData(res.data);
+        } catch (error) {
+            console.log("Ein Fehler ist aufgetreten", error);
+        }
+    }
+
+    useEffect(() => {
+        getUserData()
+        // .then(() => {
+        //     if (userData){
+        //         setUserTitel(userData.userTitle || "");
+        //         setUserSalutation(userData.userSalutation || "");
+        //     }
+        // })
+
+    }, []);
+
+    const [userTitel, setUserTitel] = useState(userData?.userTitle || "")
+    const [userSalutation, setUserSalutation] = useState(userData?.userSalutation || "")
 
     const [userLastName, setUserLastName] = useState("")
     const [userFirstName, setUserFirstName] = useState("")
@@ -39,6 +73,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
 
     function onChangeHandlerUserSalutation(event: ChangeEvent<HTMLInputElement>){
         setUserSalutation(event.target.value)
+
     }
 
     function onChangeHandlerUserLastName(event: ChangeEvent<HTMLInputElement>){
@@ -81,6 +116,36 @@ export default function ModalCreateTicket(props: ModalCreate) {
         setTicketCustomerDescription(event.target.value)
     }
 
+/*    async function getUserData() {
+        try {
+            // Erste Anfrage
+            const response = await axios({
+                method: "get",
+                url: "http://localhost:5173/api/user/me2",
+            });
+            // userLoginname = response.data;
+            setUserLoginname(response.data);
+            // Zweite Anfrage
+            const res = await axios({
+                method: 'get',
+                url: `http://localhost:5173/api/user/user/${userLoginname}`,
+            });
+            setUserData(res.data);
+        } catch (error) {
+            console.log("Ein Fehler ist aufgetreten", error);
+        }
+    }*/
+
+/*    useEffect(() => {
+        getUserData()
+            // .then(() => {
+            //     if (userData){
+            //         setUserTitel(userData.userTitle || "");
+            //         setUserSalutation(userData.userSalutation || "");
+            //     }
+            // })
+    }, []);*/
+
     function createNewTicket(event:FormEvent<HTMLFormElement>){
         event.preventDefault();
         axios.post("/api/ticket", {userTitel, userSalutation, userLastName, userFirstName,
@@ -95,6 +160,63 @@ export default function ModalCreateTicket(props: ModalCreate) {
             })
             .catch((error) => console.log(error));
     }
+
+/*    // Hier den CSRF-Token aus dem Cookie holen
+    function getCSRFToken() {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith('XSRF-TOKEN=')) {
+                return cookie.substring('XSRF-TOKEN='.length, cookie.length);
+            }
+        }
+        return null;
+    }
+
+// Den CSRF-Token holen
+    const csrfToken = getCSRFToken();
+    console.log("csrfToken: ",csrfToken)
+
+    function createNewTicket(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        // Hier den CSRF-Token aus dem Cookie holen
+        const csrfToken = getCSRFToken();
+        // console.log("csrfToken: ",csrfToken)
+
+        fetch('http://localhost:5173/api/ticket', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken // CSRF-Token hinzufügen
+            },
+            body: JSON.stringify({
+                userTitel,
+                userSalutation,
+                userLastName,
+                userFirstName,
+                userDepartment,
+                userLocation,
+                userBuilding,
+                userRoom,
+                userPhoneNumber,
+                userEMail,
+                ticketCustomerHeadline,
+                ticketCustomerDescription
+            })
+        })
+            .then(response => {
+                // Handle the response
+                console.log(response)
+            })
+            .then(() => {
+                axios.get('/ticketoverview')
+                    .then((response) => props.setTickets(response.data))
+                nav("/ticketoverview")
+            })
+            .catch((error) => console.log(error));
+    }*/
+
 
     return(
         <div>
@@ -118,13 +240,13 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Titel:
                                     </Form.Label>
-                                    <input type={"text"} id={"userTitel"} onChange={onChangeHandlerUserTitel}/>
+                                    <input style={{width:'300px'}} type={"text"} id={"userTitel"} value={userData?.userTitle} onChange={onChangeHandlerUserTitel}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Anrede:
                                     </Form.Label>
-                                    <input type={"text"} id={"userSalutation"} required={true} onChange={onChangeHandlerUserSalutation}/>
+                                    <input style={{width:'300px'}} type={"text"} id={"userSalutation"} value={userData?.userSalutation} onChange={onChangeHandlerUserSalutation}/>
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -136,13 +258,13 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Nachname:
                                     </Form.Label>
-                                    <input type="text" id={"userLastName"} required={true} onChange={onChangeHandlerUserLastName}/>
+                                    <input style={{width:'300px'}} type="text" id={"userLastName"} value={userData?.userLastName} onChange={onChangeHandlerUserLastName} required={true} />
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Vorname:
                                     </Form.Label>
-                                    <input type="text" id={"userFirstName"} required={true} onChange={onChangeHandlerUserFirstName}/>
+                                    <input style={{width:'300px'}} type="text" id={"userFirstName"} value={userData?.userFirstName} onChange={onChangeHandlerUserFirstName} required={true} />
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -154,13 +276,13 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Standort:
                                     </Form.Label>
-                                    <input type="text" id={"userLocation"} onChange={onChangeHandlerUserLocation}/>
+                                    <input style={{width:'300px'}} type="text" id={"userLocation"} value={userData?.userLocation} onChange={onChangeHandlerUserLocation}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Gebäude:
                                     </Form.Label>
-                                    <input type="text" id={"userBuilding"} required={true} onChange={onChangeHandlerUserBuilding}/>
+                                    <input style={{width:'300px'}} type="text" id={"userBuilding"} value={userData?.userBuilding} onChange={onChangeHandlerUserBuilding} required={true} />
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -172,13 +294,13 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Abteilung:
                                     </Form.Label>
-                                    <input type="text" id={"userDepartment"} required={true} onChange={onChangeHandlerUserDepartment}/>
+                                    <input style={{width:'300px'}} type="text" id={"userDepartment"} value={userData?.userDepartment} onChange={onChangeHandlerUserDepartment} required={true} />
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Raum:
                                     </Form.Label>
-                                    <input type="text" id={"userRoom"} required={true} onChange={onChangeHandlerUserRoom}/>
+                                    <input style={{width:'300px'}} type="text" id={"userRoom"} value={userData?.userRoom} onChange={onChangeHandlerUserRoom} required={true} />
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -190,13 +312,13 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Telefon:
                                     </Form.Label>
-                                    <input type="text" id={"userPhoneNumber"} required={true} onChange={onChangeHandlerUserPhoneNumber}/>
+                                    <input style={{width:'300px'}} type="text" id={"userPhoneNumber"} value={userData?.userPhoneNumber} onChange={onChangeHandlerUserPhoneNumber} required={true} />
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         E-Mail:
                                     </Form.Label>
-                                    <input type="text" id={"userEMail"} required={true} onChange={onChangeHandlerUserEMail}/>
+                                    <input style={{width:'300px'}} type="text" id={"userEMail"} value={userData?.userEMail} onChange={onChangeHandlerUserEMail} required={true} />
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -207,7 +329,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                 <Form.Label column sm="2">
                                     Überschrift:
                                 </Form.Label>
-                                <input type="text" id={"userHeadlineField"} required={true} onChange={onChangeHandlerTicketCustomerHeadline}/>
+                                <input type="text" id={"userHeadlineField"} onChange={onChangeHandlerTicketCustomerHeadline} required={true} />
                             </Row>
                         </Form.Group>
 
@@ -217,7 +339,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                 <Form.Label column sm="3">
                                     detaillierte Beschreibung:
                                 </Form.Label>
-                                <textarea id={"userDetailDiscription"} required={true} onChange={onChangeHandlerTicketCustomerDescription}/>
+                                <textarea id={"userDetailDiscription"} onChange={onChangeHandlerTicketCustomerDescription} required={true} />
                             </Row>
                         </Form.Group>
 

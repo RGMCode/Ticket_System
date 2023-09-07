@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @AllArgsConstructor
@@ -36,6 +37,11 @@ public class UserController {
                 .getContext()
                 .getAuthentication()
                 .getName();
+    }
+
+    @GetMapping("/user/{userLoginName}")
+    public Optional<User> getUserData(@PathVariable String userLoginName) {
+        return userService.getUserDataByLoginName(userLoginName);
     }
 
     @PostMapping("/login")

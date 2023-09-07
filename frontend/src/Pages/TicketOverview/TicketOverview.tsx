@@ -68,7 +68,7 @@ export default function TicketOverview() {
             url: "http://localhost:5173/api/ticket"
         }).then(function (response) {
             const sortedTickets = response.data.sort((a: TicketData, b: TicketData) => {
-                // Vergleiche die Ticket-IDs in absteigender Reihenfolge
+                // console.log(response.data)
                 return parseInt(b.id) - parseInt(a.id);
             });
             setTickets(sortedTickets);

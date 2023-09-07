@@ -33,9 +33,6 @@ public class SecutityConfig {
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                         .csrfTokenRequestHandler(requestHandler))
                 .httpBasic(Customizer.withDefaults())
-//                .sessionManagement(httpSecuritySessionManagementConfigurer ->
-//                        httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                // popups im browser unterdrücken
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .httpBasic(basic -> basic.authenticationEntryPoint(
                         (request, response, authException) ->
@@ -46,12 +43,14 @@ public class SecutityConfig {
                 .authorizeHttpRequests(httpRequests ->
                                 httpRequests
                                         .requestMatchers(HttpMethod.POST, "/api/user").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/api/ticket").permitAll()
                                         .requestMatchers("/api/user/**").permitAll()
                                         .requestMatchers("/api/user").authenticated()
-                                        // .requestMatchers("/api/employees").hasRole("ADMIN") -> User Roles anlegen!!
+                                        .requestMatchers("/api/ticket/**").permitAll()
+                                        .requestMatchers("/api/ticket").authenticated()
+                                        // .requestMatchers("/api/user").hasRole("ADMIN") -> User Roles anlegen
                                         .anyRequest()
                                         .permitAll()
-//                                .authenticated()
                 )
                 .build();
     }

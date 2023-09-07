@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @Service
@@ -52,5 +53,8 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public Optional<User> getUserDataByLoginName(String userLoginName) {
+        return userRepository.findUserByUserLoginName(userLoginName);
+    }
 
 }

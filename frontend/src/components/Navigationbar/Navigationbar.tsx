@@ -2,10 +2,18 @@
 import './Navigationbar.css'
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import logo from "../../pictures/MRG_Code_Logo.png"; // Pfad zu Ihrem Logo
+import logo from "../../pictures/MRG_Code_Logo.png";
+import { useUser } from '../../UserContext';
+
 
 export default function Navigationbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { setUser } = useUser();
+
+    const handleLogout = () => {
+        setUser(null);
+        setIsOpen(false);
+    };
 
     return (
         <>
@@ -20,7 +28,7 @@ export default function Navigationbar() {
                     <Link to={"/home"} onClick={() => setIsOpen(false)}>Home</Link>
                     <Link to={"/news"} onClick={() => setIsOpen(false)}>News</Link>
                     <Link to={"/ticketoverview"} onClick={() => setIsOpen(false)}>Tickets</Link>
-                    <Link to={"/home"} onClick={() => setIsOpen(false)}>Logout</Link>
+                    <Link to={"/"} onClick={handleLogout}>Logout</Link>
                 </div>
             </div>
         </>

@@ -11,14 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("Ticket")
 public class Ticket {
 
-    // theoretische muss noch die User ID pro Ticket für die zuordnung gespeichert werden
+    private String id;
+    private String ticketUUID;
+    private String ticketDate;
+    private String ticketTime;
 
-    private String id;                              // ID
-    private String ticketUUID;                      // Unique UUID
-    private String ticketDate;                      // Datum wann das Ticket erstellt wurde
-    private String ticketTime;                      // Uhrzeit wann das Ticket erstellt wurde
-
-    private String userID;                          // ID des Erstellers
+    private String userID;
 
     private String userTitle;
     private String userSalutation;
@@ -33,26 +31,26 @@ public class Ticket {
     private String userPhoneNumber;
     private String userEMail;
 
-    private String unitID;                          // NB / PC / TC o.ä. ID
+    private String unitID;
 
-    private String customerHeadline;                // Kunden-Überschrift
-    private String customerDescription;             // Kunden-Beschreibung
-    private String ticketStatus;                    // noch offen, in bearbeitung, beendet
+    private String customerHeadline;
+    private String customerDescription;
+    private String ticketStatus;
 
-    private String processingEmployeeLastName;      // bearbeitender Mitarbeiter
-    private String processingEmployeeFirstName;     // bearbeitender Mitarbeiter
+    private String processingEmployeeLastName;
+    private String processingEmployeeFirstName;
 
-    private String publicComment;                   // öffentlicher Kommentar
-    private String internalComment;                 // interner Kommentar
+    private String publicComment;
+    private String internalComment;
 
-    private String employeeHistoryLastName;         // Mitarbeiter History
-    private String employeeHistoryFirstName;        // Mitarbeiter History
+    private String employeeHistoryLastName;
+    private String employeeHistoryFirstName;
 
-    private String contributingEmployeesLastName;   // mitwirkende Mitarbeiter
-    private String contributingEmployeesFirstName;  // mitwirkende Mitarbeiter
+    private String contributingEmployeesLastName;
+    private String contributingEmployeesFirstName;
 
-    private String escalationStatus;                // Eskalastions-Status
+    private String escalationStatus;
 
-    private String solutionAnswer;                  // Lösungs-Antwort
+    private String solutionAnswer;
 
 }

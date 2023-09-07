@@ -20,7 +20,19 @@ public class Ticket {
 
     private String userID;                          // ID des Erstellers
 
-    private String room;                            // in welchem Raum ist das Problem
+    private String userTitle;
+    private String userSalutation;
+    private String userLastName;
+    private String userFirstName;
+
+    private String userDepartment;
+    private String userLocation;
+    private String userBuilding;
+    private String userRoom;
+
+    private String userPhoneNumber;
+    private String userEMail;
+
     private String unitID;                          // NB / PC / TC o.ä. ID
 
     private String customerHeadline;                // Kunden-Überschrift

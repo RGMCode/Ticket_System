@@ -6,6 +6,7 @@ import axios from "axios";
 import ModalCreateTicket from "../../components/ModalCeateTicket/ModalCreateTicket.tsx";
 import ModalTicketDetails from "../../components/ModalTicketDetails/ModalTicketDetails.tsx";
 
+
 export type TicketData = {
     "id": string,
     "ticketUUID": string,
@@ -62,6 +63,7 @@ export default function TicketOverview() {
     const [currentPage, setCurrentPage] = useState(1);
     const [ticketsPerPage, setTicketsPerPage] = useState(20);
 
+
     useEffect(() => {
         axios({
             method: "get",
@@ -83,6 +85,7 @@ export default function TicketOverview() {
             setUsers(response.data)
         })
     }, []);
+
 
     const indexOfLastTicket = currentPage * ticketsPerPage;
     const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
@@ -133,6 +136,7 @@ export default function TicketOverview() {
     }
 
     const [createTicketModal, setCreateTicketModal] = useState(false)
+
 
     return (
         <div>

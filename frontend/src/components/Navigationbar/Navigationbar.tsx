@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import logo from "../../pictures/MRG_Code_Logo.png";
 import { useUser } from '../../UserContext';
+import axios from "axios";
 
 
 export default function Navigationbar() {
@@ -11,6 +12,13 @@ export default function Navigationbar() {
     const { setUser } = useUser();
 
     const handleLogout = () => {
+        axios.post('/api/user/logout')
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Fehler beim Abmelden:', error);
+            });
         setUser(null);
         setIsOpen(false);
     };

@@ -23,8 +23,4 @@ public class TicketController {
     public Ticket addTicket(@RequestBody Ticket ticket) {
         return ticketService.addTicket(ticket);
     }
-
-
-
-
 }

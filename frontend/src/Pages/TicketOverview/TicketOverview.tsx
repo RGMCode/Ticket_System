@@ -6,6 +6,7 @@ import axios from "axios";
 import ModalCreateTicket from "../../components/ModalCeateTicket/ModalCreateTicket.tsx";
 import ModalTicketDetails from "../../components/ModalTicketDetails/ModalTicketDetails.tsx";
 
+
 export type TicketData = {
     "id": string,
     "ticketUUID": string,
@@ -62,6 +63,7 @@ export default function TicketOverview() {
     const [currentPage, setCurrentPage] = useState(1);
     const [ticketsPerPage, setTicketsPerPage] = useState(20);
 
+
     useEffect(() => {
         axios({
             method: "get",
@@ -83,6 +85,7 @@ export default function TicketOverview() {
             setUsers(response.data)
         })
     }, []);
+
 
     const indexOfLastTicket = currentPage * ticketsPerPage;
     const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
@@ -111,15 +114,16 @@ export default function TicketOverview() {
         const [showTicketDetails, setShowTicketDetails] = useState(false)
         return (
             <tr>
-                <td id={"w100"} >{props.ticket.id}</td>
-                <td id={"w220"} >{props.ticket.ticketDate} | {props.ticket.ticketTime} Uhr</td>
+                <td id={"w100"}>{props.ticket.id}</td>
+                <td id={"w220"}>{props.ticket.ticketDate} | {props.ticket.ticketTime} Uhr</td>
                 <td>{props.ticket.customerHeadline}</td>
                 <td>{props.user.userDepartment}</td>
-                <td id={"w100"} >{props.user.userSalutation}</td>
+                <td id={"w100"}>{props.user.userSalutation}</td>
                 <td>{props.user.userLastName}</td>
                 <td>{props.user.userFirstName}</td>
                 <td>
-                    <Button style={{height:'35px'}} variant="outline-primary" onClick={() => setShowTicketDetails(true)}>details</Button>
+                    <Button style={{height: '35px'}} variant="outline-primary"
+                            onClick={() => setShowTicketDetails(true)}>details</Button>
                     <ModalTicketDetails
                         onHide={() => setShowTicketDetails(false)}
                         show={showTicketDetails}
@@ -134,29 +138,30 @@ export default function TicketOverview() {
 
     const [createTicketModal, setCreateTicketModal] = useState(false)
 
+
     return (
         <div>
             <Navigationbar/>
-            {/*<h1>TicketOverview</h1>*/}
             <div>
-                <Button style={{width:'150px', height:'50px'}} variant="success"
+                <Button style={{width: '150px', height: '50px'}} variant="success"
                         onClick={() => setCreateTicketModal(true)}>
                     Ticket erstellen
                 </Button>
-                <ModalCreateTicket onHide={() => setCreateTicketModal(false)} show={createTicketModal} setTickets={setTickets}/>
+                <ModalCreateTicket onHide={() => setCreateTicketModal(false)} show={createTicketModal}
+                                   setTickets={setTickets}/>
             </div>
             <div>
-                <Table striped bordered hover variant="light" >
+                <Table striped bordered hover variant="light">
                     <thead>
                     <tr>
-                        <th id={"w100"} >Ticket-ID</th>
-                        <th id={"w220"} >Datum & Uhrzeit</th>
-                        <th id={"wauto"} >Problem</th>
-                        <th id={"w220"} >Abteilung</th>
-                        <th id={"w100"} >Anrede</th>
-                        <th id={"wauto"} >Last Name</th>
-                        <th id={"wauto"} >First Name</th>
-                        <th id={"w100"} >Details</th>
+                        <th id={"w100"}>Ticket-ID</th>
+                        <th id={"w220"}>Datum & Uhrzeit</th>
+                        <th id={"wauto"}>Problem</th>
+                        <th id={"w220"}>Abteilung</th>
+                        <th id={"w100"}>Anrede</th>
+                        <th id={"wauto"}>Last Name</th>
+                        <th id={"wauto"}>First Name</th>
+                        <th id={"w100"}>Details</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -179,7 +184,8 @@ export default function TicketOverview() {
                         <div className="pagination">
                             {currentPage > 1 && <Button variant={"primary"} onClick={prevPage}>Vorherige</Button>}
                             <span>Seite {currentPage} | Zeigt Tickets {indexOfFirstTicket + 1} - {Math.min(indexOfLastTicket, tickets.length)} von {tickets.length}</span>
-                            {currentTickets.length === ticketsPerPage && <Button variant={"primary"} onClick={nextPage}>Nächste</Button>}
+                            {currentTickets.length === ticketsPerPage &&
+                                <Button variant={"primary"} onClick={nextPage}>Nächste</Button>}
                         </div>
                         <div>
                             <label>Anzeigen: </label>

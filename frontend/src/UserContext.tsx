@@ -6,7 +6,7 @@ interface UserContextProps {
     setUser: Dispatch<SetStateAction<string | null>>;
 }
 
-const UserContext = createContext<UserContextProps | null>(null);
+export const UserContext = createContext<UserContextProps | null>(null);
 
 interface UserProviderProps {
     children: ReactNode;

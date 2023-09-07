@@ -14,8 +14,32 @@ type ModalCreate = {
 export default function ModalCreateTicket(props: ModalCreate) {
 
     const [userData, setUserData] = useState<UserData | null>(null);
-    const [userLoginname, setUserLoginname] = useState<string | null>(null); // Hier sollte es ein string sein
+    const [, setUserLoginname] = useState<string | null>(null); // Hier sollte es ein string sein
     const [userID, setUserID] = useState<string | null>(null); // Hier sollte es ein string sein
+
+    // async function getUserData() {
+    //     try {
+    //         // Erste Anfrage
+    //         const response = await axios({
+    //             method: "get",
+    //             url: "http://localhost:5173/api/user/me2",
+    //         });
+    //         // userLoginname = response.data;
+    //         setUserLoginname(response.data);
+    //
+    //         // Zweite Anfrage - Erst nachdem setUserLoginname aktualisiert wurde
+    //         const res = await axios({
+    //             method: 'get',
+    //             url: `http://localhost:5173/api/user/user/${response.data}`, // Hier verwenden wir response.data direkt
+    //             // url: `http://localhost:5173/api/user/user/${userLoginname}`, // Hier verwenden wir response.data direkt
+    //         });
+    //         setUserID(res.data.id);
+    //         setUserData(res.data);
+    //     } catch (error) {
+    //         console.log("Ein Fehler ist aufgetreten", error);
+    //     }
+    // }
+
 
     async function getUserData() {
         try {
@@ -24,15 +48,18 @@ export default function ModalCreateTicket(props: ModalCreate) {
                 method: "get",
                 url: "http://localhost:5173/api/user/me2",
             });
+            console.log("Antwort von /api/user/me2:", response.data);
+
             // userLoginname = response.data;
             setUserLoginname(response.data);
 
             // Zweite Anfrage - Erst nachdem setUserLoginname aktualisiert wurde
             const res = await axios({
                 method: 'get',
-                url: `http://localhost:5173/api/user/user/${response.data}`, // Hier verwenden wir response.data direkt
-                // url: `http://localhost:5173/api/user/user/${userLoginname}`, // Hier verwenden wir response.data direkt
+                url: `http://localhost:5173/api/user/user/${response.data}`,
             });
+            console.log("Antwort von /api/user/user/:id", res.data);
+
             setUserID(res.data.id);
             setUserData(res.data);
         } catch (error) {
@@ -40,20 +67,35 @@ export default function ModalCreateTicket(props: ModalCreate) {
         }
     }
 
-    console.log("UserID: ", userID)
+    // console.log("UserID: ", userID)
 
     useEffect(() => {
         getUserData()
-        // .then(() => {
-        //     if (userData){
-        //         setUserTitel(userData.userTitle || "");
-        //         setUserSalutation(userData.userSalutation || "");
-        //     }
-        // })
-        if (userID !== null) {
-            // console.log("userID: ", userID, " aus dem useEffect");
+        // // .then(() => {
+        // //     if (userData){
+        // //         setUserTitel(userData.userTitle || "");
+        // //         setUserSalutation(userData.userSalutation || "");
+        // //     }
+        // // })
+        // if (userID !== null) {
+        //     // console.log("userID: ", userID, " aus dem useEffect");
+        // }
+    }, []);
+
+    useEffect(() => {
+        if (userData) {
+            setUserTitel(userData.userTitle || "");
+            setUserSalutation(userData.userSalutation || "");
+            setUserLastName(userData.userLastName || "");
+            setUserFirstName(userData.userFirstName || "");
+            setUserDepartment(userData.userDepartment || "");
+            setUserLocation(userData.userLocation || "");
+            setUserBuilding(userData.userBuilding || "");
+            setUserRoom(userData.userRoom || "");
+            setUserPhoneNumber(userData.userPhoneNumber || "");
+            setUserEMail(userData.userEMail || "");
         }
-    }, [userID]);
+    }, [userData]);
 
 
     const [userTitel, setUserTitel] = useState(userData?.userTitle || "")
@@ -307,3 +349,4 @@ export default function ModalCreateTicket(props: ModalCreate) {
     );
 
 }
+

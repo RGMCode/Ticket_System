@@ -1,7 +1,6 @@
 import {Button, Col, Form, Modal} from "react-bootstrap";
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import axios from "axios";
-// import {useNavigate} from "react-router-dom";
 import {TicketData, UserData} from "../../Pages/TicketOverview/TicketOverview.tsx"
 import Row from "react-bootstrap/Row";
 
@@ -17,57 +16,25 @@ export default function ModalCreateTicket(props: ModalCreate) {
     const [, setUserLoginname] = useState<string | null>(null); // Hier sollte es ein string sein
     const [userID, setUserID] = useState<string | null>(null); // Hier sollte es ein string sein
 
-    // async function getUserData() {
-    //     try {
-    //         // Erste Anfrage
-    //         const response = await axios({
-    //             method: "get",
-    //             url: "http://localhost:5173/api/user/me2",
-    //         });
-    //         // userLoginname = response.data;
-    //         setUserLoginname(response.data);
-    //
-    //         // Zweite Anfrage - Erst nachdem setUserLoginname aktualisiert wurde
-    //         const res = await axios({
-    //             method: 'get',
-    //             url: `http://localhost:5173/api/user/user/${response.data}`, // Hier verwenden wir response.data direkt
-    //             // url: `http://localhost:5173/api/user/user/${userLoginname}`, // Hier verwenden wir response.data direkt
-    //         });
-    //         setUserID(res.data.id);
-    //         setUserData(res.data);
-    //     } catch (error) {
-    //         console.log("Ein Fehler ist aufgetreten", error);
-    //     }
-    // }
-
-
     async function getUserData() {
         try {
-            // Erste Anfrage
             const response = await axios({
                 method: "get",
                 url: "http://localhost:5173/api/user/me2",
             });
             console.log("Antwort von /api/user/me2:", response.data);
-
-            // userLoginname = response.data;
             setUserLoginname(response.data);
-
-            // Zweite Anfrage - Erst nachdem setUserLoginname aktualisiert wurde
             const res = await axios({
                 method: 'get',
                 url: `http://localhost:5173/api/user/user/${response.data}`,
             });
             console.log("Antwort von /api/user/user/:id", res.data);
-
             setUserID(res.data.id);
             setUserData(res.data);
         } catch (error) {
             console.log("Ein Fehler ist aufgetreten", error);
         }
     }
-
-    // console.log("UserID: ", userID)
 
     useEffect(() => {
         getUserData()
@@ -88,7 +55,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
         }
     }, [userData]);
 
-
     const [userTitel, setUserTitel] = useState("")
     const [userSalutation, setUserSalutation] = useState("")
 
@@ -106,8 +72,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
 
     const [customerHeadline, setCustomerHeadline] = useState("")
     const [customerDescription, setCustomerDescription] = useState("")
-
-    // const nav = useNavigate();
 
     function onChangeHandlerUserTitel(event: ChangeEvent<HTMLInputElement>) {
         setUserTitel(event.target.value)
@@ -158,7 +122,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
         setCustomerDescription(event.target.value)
     }
 
-
     function createNewTicket(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         axios.post("/api/ticket", {
@@ -179,12 +142,10 @@ export default function ModalCreateTicket(props: ModalCreate) {
             .then(() => {
                 axios.get('/api/ticket')
                     .then((response) => props.setTickets(response.data))
-                // //     nav("/ticketoverview")
                 console.log(props.setTickets)
             })
             .catch((error) => console.log(error));
     }
-
 
     return (
         <div>

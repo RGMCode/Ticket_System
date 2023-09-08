@@ -138,7 +138,6 @@ export default function TicketOverview() {
 
     const [createTicketModal, setCreateTicketModal] = useState(false)
 
-
     return (
         <div>
             <Navigationbar/>

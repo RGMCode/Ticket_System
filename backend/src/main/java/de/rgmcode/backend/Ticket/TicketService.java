@@ -31,8 +31,6 @@ public class TicketService {
                                     .withId(idService.generateTicketMaxID())
                                     .withTicketUUID(idService.generateTicketUUID())
         );
-//                                    .withTicketUUID(idService.generateTicketUUID()).withUserID(user.getId()));
-//        ticketRepository.save(ticket);    // nur für das 1. Ticket die obriger Zeile auskommentieren dafür.
         return ticket;
     }
 

@@ -49,7 +49,6 @@ public class UserService implements UserDetailsService {
                                 .withId(idService.generateUserMaxID())
                                 .withUserUUID(idService.generateUserUUID())
         );
-//        userRepository.save(user);    // nur für den 1. User die obriger Zeile auskommentieren dafür.
         return user;
     }
 

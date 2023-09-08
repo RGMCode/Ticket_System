@@ -20,7 +20,6 @@ public class SecutityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-//        return NoOpPasswordEncoder.getInstance();
         return Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
 
@@ -48,7 +47,6 @@ public class SecutityConfig {
                                         .requestMatchers("/api/user").authenticated()
                                         .requestMatchers("/api/ticket/**").permitAll()
                                         .requestMatchers("/api/ticket").authenticated()
-                                        // .requestMatchers("/api/user").hasRole("ADMIN") -> User Roles anlegen
                                         .anyRequest()
                                         .permitAll()
                 )

@@ -4,7 +4,6 @@ import {Button} from "react-bootstrap";
 import {useState} from "react";
 import ModalLogin from "../../components/ModalLogin/ModalLogin.tsx";
 import ModalRegistration from '../../components/ModalRigistration/ModalRegistration.tsx'
-// import Navigationbar from "../../components/Navigationbar/Navigationbar.tsx";
 
 export default function Homepage() {
     const [loginModal, setLoginModal] = useState(false);

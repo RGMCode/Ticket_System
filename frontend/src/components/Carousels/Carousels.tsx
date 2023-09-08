@@ -18,7 +18,6 @@ export default function Carousels() {
                     />
                     <Carousel.Caption>
                         <h5>Headquarter</h5>
-                        {/*<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>*/}
                     </Carousel.Caption>
                 </Carousel.Item>
 

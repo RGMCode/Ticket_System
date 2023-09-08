@@ -31,7 +31,6 @@ export default function ModalLogin(props: ModalRegProps) {
 
     const nav = useNavigate();
 
-
     function onChangeHandlerUserTitel(event: ChangeEvent<HTMLInputElement>){
         setUserTitel(event.target.value)
     }

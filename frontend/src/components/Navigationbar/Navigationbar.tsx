@@ -6,7 +6,6 @@ import logo from "../../pictures/MRG_Code_Logo.png";
 import { useUser } from '../../UserContext';
 import axios from "axios";
 
-
 export default function Navigationbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { setUser } = useUser();

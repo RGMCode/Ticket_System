@@ -9,14 +9,13 @@
 
 .carousel-caption {
     bottom: 10%;
-    background-color: rgba(30, 30, 30, 0.7);  /* optional: um den Text besser lesbar zu machen */
-    /*padding: 10px;*/
+    background-color: rgba(30, 30, 30, 0.7);
     border-radius: 250px;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #b0cd4d;  /* Ändern Sie dies in die gewünschte Farbe */
+    background-color: #b0cd4d;
     border-radius: 100%;
 }
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UserRepository  extends MongoRepository<User, String> {
 
     Optional <User> findFirstByOrderByIdDesc();
-//    Optional<User> findUserByUserLoginName (String username);
+
     Optional<User> findUserByUserLoginName(String userLoginName);
 
 }

@@ -27,7 +27,8 @@ public class TicketService {
         ticket.setTicketDate(currentDate);
         String currentTime = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(now);
         ticket.setTicketTime(currentTime);
-        ticketRepository.save(ticket.withId(idService.generateTicketMaxID())
+        ticketRepository.save(ticket
+                                    .withId(idService.generateTicketMaxID())
                                     .withTicketUUID(idService.generateTicketUUID())
         );
 //                                    .withTicketUUID(idService.generateTicketUUID()).withUserID(user.getId()));

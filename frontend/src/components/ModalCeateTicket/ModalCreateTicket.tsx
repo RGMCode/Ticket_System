@@ -71,15 +71,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
 
     useEffect(() => {
         getUserData()
-        // // .then(() => {
-        // //     if (userData){
-        // //         setUserTitel(userData.userTitle || "");
-        // //         setUserSalutation(userData.userSalutation || "");
-        // //     }
-        // // })
-        // if (userID !== null) {
-        //     // console.log("userID: ", userID, " aus dem useEffect");
-        // }
     }, []);
 
     useEffect(() => {
@@ -98,10 +89,10 @@ export default function ModalCreateTicket(props: ModalCreate) {
     }, [userData]);
 
 
-    const [userTitel, setUserTitel] = useState(userData?.userTitle || "")
-    const [userSalutation, setUserSalutation] = useState(userData?.userSalutation || "")
+    const [userTitel, setUserTitel] = useState("")
+    const [userSalutation, setUserSalutation] = useState("")
 
-    const [userLastName, setUserLastName] = useState("" || userData?.userLastName)
+    const [userLastName, setUserLastName] = useState("")
     const [userFirstName, setUserFirstName] = useState("")
 
     const [userDepartment, setUserDepartment] = useState("")
@@ -185,12 +176,12 @@ export default function ModalCreateTicket(props: ModalCreate) {
             customerHeadline: customerHeadline,
             customerDescription: customerDescription
         })
-            // .then()
-            // .then(() => {
-            //     axios.get('/api/ticket')
-            //          .then((response) => props.setTickets(response.data))
-            //     nav("/ticketoverview")
-            // })
+            .then(() => {
+                axios.get('/api/ticket')
+                    .then((response) => props.setTickets(response.data))
+                // //     nav("/ticketoverview")
+                console.log(props.setTickets)
+            })
             .catch((error) => console.log(error));
     }
 

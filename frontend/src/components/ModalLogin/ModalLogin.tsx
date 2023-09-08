@@ -22,9 +22,7 @@ export default function ModalLogin({ onHide, show }: ModalLoginProps) {
         try {
             const response = await axios.post('/api/user/login', {}, { auth: { username, password } });
             if (response.data) {
-                setUser(username); // oder setUser(response.data), je nachdem was Ihre API zurückgibt
-                // console.log("username: ", username)
-                // console.log("ModalLogin-response.data: ", response.data)
+                setUser(username);
                 navigate('/home');
             }
         } catch (error) {

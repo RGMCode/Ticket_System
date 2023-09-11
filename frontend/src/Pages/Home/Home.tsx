@@ -3,18 +3,15 @@ import Carousels from "../../components/Carousels/Carousels.tsx";
 import {Card} from "react-bootstrap";
 
 
-
 export default function Home() {
 
-    return(
+    return (
         <div>
             <Navigationbar/>
             <Carousels/>
 
-            {/*<div style={{minWidth:'1200px', maxWidth: '1200px', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>*/}
-                {/*<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>*/}
-                    <div>
-                        <div>
+            <div>
+                <div>
                     <Card className="text-center">
                         <Card.Header><h1>NEWS NEWS NEWS</h1></Card.Header>
                         {/*<Card.Header><h4>Netzwerkausfälle</h4></Card.Header>*/}
@@ -61,8 +58,10 @@ export default function Home() {
                             <Card.Title>Druckerausfall im Hauptbüro</Card.Title>
                             <Card.Text>
                                 Heute Vormittag ist einer unserer Hauptdrucker im Bürobereich ausgefallen,<br/>
-                                was zu Verzögerungen bei der Ausgabe wichtiger Dokumente führte. Unsere IT-Abteilung<br/>
-                                arbeitet daran, das Problem zu beheben und den Drucker so schnell wie möglich wieder <br/>
+                                was zu Verzögerungen bei der Ausgabe wichtiger Dokumente führte. Unsere
+                                IT-Abteilung<br/>
+                                arbeitet daran, das Problem zu beheben und den Drucker so schnell wie möglich
+                                wieder <br/>
                                 einsatzbereit zu machen.
                             </Card.Text>
                         </Card.Body>

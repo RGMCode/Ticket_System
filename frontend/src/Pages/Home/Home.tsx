@@ -63,7 +63,7 @@ export default function Home() {
                             einsatzbereit zu machen.
                         </Card.Text>
                     </Card.Body>
-                    <Card.Footer className="text-muted">11.09.2023</Card.Footer>
+                    <Card.Footer className="text-muted">13.08.2023</Card.Footer>
                 </Card>
                 <Card className="text-center">
                     {/*<Card.Header><h4>Netzwerkausfälle</h4></Card.Header>*/}
@@ -76,7 +76,20 @@ export default function Home() {
                             und den Normalbetrieb so schnell wie möglich wiederherzustellen.
                         </Card.Text>
                     </Card.Body>
-                    <Card.Footer className="text-muted">11.09.2023</Card.Footer>
+                    <Card.Footer className="text-muted">29.07.2023</Card.Footer>
+                </Card>
+                <Card className="text-center">
+                    {/*<Card.Header><h4>Netzwerkausfälle</h4></Card.Header>*/}
+                    <Card.Body>
+                        <Card.Title>E-Mail-Ausfälle:</Card.Title>
+                        <Card.Text>
+                            Unsere E-Mail-Dienste sind heute aufgrund eines technischen Problems ausgefallen, <br/>
+                            was zu Schwierigkeiten bei der internen und externen Kommunikation geführt hat. <br/>
+                            Unsere IT-Spezialisten arbeiten daran, die E-Mail-Server wieder online zu bringen <br/>
+                            und alle verschobenen Nachrichten zuzustellen.
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">03.07.2023</Card.Footer>
                 </Card>
             </div>
         </div>

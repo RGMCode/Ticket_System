@@ -33,7 +33,7 @@ export default function Navigationbar() {
                 </div>
                 <div className={`menu ${isOpen ? 'open' : ''}`}>
                     <Link to={"/home"} onClick={() => setIsOpen(false)}>Home</Link>
-                    <Link to={"/news"} onClick={() => setIsOpen(false)}>News</Link>
+                    {/*<Link to={"/news"} onClick={() => setIsOpen(false)}>News</Link>*/}
                     <Link to={"/ticketoverview"} onClick={() => setIsOpen(false)}>Tickets</Link>
                     <Link to={"/"} onClick={handleLogout}>Logout</Link>
                 </div>

@@ -8,9 +8,9 @@ import DoWhatIsGreat from '../../pictures/DoWhatIsGreat.jpg'
 export default function Carousels() {
 
     return(
-        <div>
-            <Carousel >
-                <Carousel.Item interval={5000} >
+        <div className={"carousel"}>
+            <Carousel>
+                <Carousel.Item interval={4000} >
                     <img
                         className="d-block w-100 carousel-image"
                         src={HQ}
@@ -21,7 +21,7 @@ export default function Carousels() {
                     </Carousel.Caption>
                 </Carousel.Item>
 
-                <Carousel.Item interval={5000} >
+                <Carousel.Item interval={4000} >
                     <img
                         className="d-block w-100 carousel-image"
                         src={HQ_Future}
@@ -33,7 +33,7 @@ export default function Carousels() {
                     </Carousel.Caption>
                 </Carousel.Item>
 
-                <Carousel.Item interval={5000}>
+                <Carousel.Item interval={4000}>
                     <img
                         className="d-block w-100 carousel-image"
                         src={DoWhatIsGreat}

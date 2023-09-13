@@ -5,14 +5,13 @@
     align-items: center;
     height: 60px;
     background-color: #202a31;
-
     padding: 0 50px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
-}
-
-.navbar-logo {
-    align-items: center;
-    max-height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
 .logo-container {
@@ -20,18 +19,39 @@
     align-items: center;
 }
 
+.navbar-logo {
+    max-height: 50px;
+}
+
 .navbar a {
-    color: white;
+    color: #9adcff;
     font-size: 16px;
     text-decoration: none;
     padding: 5px 20px;
     margin-left: 10px;
     border-radius: 20px;
     transition: background-color 0.2s;
+    background-color: #202a31;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    animation: rainbow 5s infinite linear;
 }
 
 .navbar a:hover {
-    background-color: #555;
+    background-color: #369abd;
+    animation: none; /* Deaktivieren Sie die Regenbogenanimation beim Überfahren */
+    border-color: #9adcff; /* Ändern Sie die Border-Color beim Überfahren */
+}
+
+@keyframes rainbow {
+    0% {border-color: red;}
+    14% {border-color: orange;}
+    28% {border-color: yellow;}
+    42% {border-color: green;}
+    57% {border-color: blue;}
+    71% {border-color: indigo;}
+    85% {border-color: violet;}
+    100% {border-color: red;}
 }
 
 .menu-toggle {
@@ -48,19 +68,13 @@
     align-items: center;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center; /* fügt vertikale Zentrierung hinzu */
         padding: 15px 20px;
-        background-color: #202a31;
     }
 
     .logo-container {
         width: 100%;
-        display: flex;
         justify-content: space-between;
     }
 
@@ -69,11 +83,10 @@
     }
 
     .menu {
-        display: none;
         flex-direction: column;
         width: 100%;
         background-color: #202a31;
-        z-index: 10;
+        display: none;
     }
 
     .menu.open {

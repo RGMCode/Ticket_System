@@ -1,8 +1,119 @@
 
+.btnCreateTicketDiv {
+    text-align: right;
+    margin-right: 3px;
+    border: #60d0ff;
+}
+
+@keyframes waveChange {
+    0% {
+        background-color: #E6F7FF;
+        color: #111111;
+    }
+    5% {
+        background-color: #ADD8E6;
+        color: #222222;
+    }
+    10% {
+        background-color: #87CEFA;
+        color: #222222;
+    }
+    15% {
+        background-color: #87CEEB;
+        color: #222222;
+    }
+    20% {
+        background-color: #6495ED;
+        color: #111111;
+    }
+    25% {
+        background-color: #508DB3;
+        color: #EFEFEF;
+    }
+    30% {
+        background-color: #3B768F;
+        color: #EFEFEF;
+    }
+    35% {
+        background-color: #29617A;
+        color: #FFFFFF;
+    }
+    40% {
+        background-color: #1E5567;
+        color: #FFFFFF;
+    }
+    45% {
+        background-color: #29617A;
+        color: #FFFFFF;
+    }
+    50% {
+        background-color: #3B768F;
+        color: #EFEFEF;
+    }
+    55% {
+        background-color: #508DB3;
+        color: #EFEFEF;
+    }
+    60% {
+        background-color: #6495ED;
+        color: #111111;
+    }
+    65% {
+        background-color: #87CEEB;
+        color: #222222;
+    }
+    70% {
+        background-color: #87CEFA;
+        color: #222222;
+    }
+    75% {
+        background-color: #ADD8E6;
+        color: #222222;
+    }
+    80% {
+        background-color: #D0E9FF;
+        color: #111111;
+    }
+    85% {
+        background-color: #ADD8E6;
+        color: #222222;
+    }
+    90% {
+        background-color: #87CEEB;
+        color: #222222;
+    }
+    95% {
+        background-color: #E6F7FF;
+        color: #111111;
+    }
+    100% {
+        background-color: #E6F7FF;
+        color: #111111;
+    }
+}
+
+
+.btnCreateTicket {
+    font-size: 20px;
+    color: #020405;
+    width: 150px;
+    height: 50px;
+    margin-top: 65px;
+    background-color: #60d0ff;
+    border-radius: 35px;
+    border: 2px solid #555555;
+    animation: waveChange 10s infinite;
+    transition: background-color 0.3s;
+}
+
+.btnCreateTicket:hover {
+    background-color: #ff9b60 !important;
+    animation-play-state: paused;
+}
+
 #w100{
     width: 100px;
     text-align: center;
-
 }
 
 #w220 {
@@ -12,5 +123,52 @@
 
 #wauto{
     width: auto;
+    text-align: center;
+}
+
+.tableDiv {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #60d0ff;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.table {
+    margin-top: 10px;
+    width: 99vw;
+    border: 5px solid #020405;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table th{
+    border: solid 1px #1e5567;
+    background-color: #369abd;
+}
+
+.table td{
+    border: solid 1px #369abd;
+}
+
+.table tr:nth-child(even) td {
+    background-color: #f8faff;
+}
+
+.table td, .table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table tr:hover td {
+    background-color: #60d0ff;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
     text-align: center;
 }

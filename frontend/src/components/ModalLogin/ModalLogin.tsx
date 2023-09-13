@@ -35,7 +35,7 @@ export default function ModalLogin({ onHide, show }: ModalLoginProps) {
             onHide={onHide}
             show={show}
             aria-labelledby="contained-modal-title-vcenter"
-            size={'sm'}
+            size={'lg'}
             centered>
             <Modal.Header closeButton>
                 <Modal.Title><h1>Login</h1></Modal.Title>

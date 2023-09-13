@@ -13,9 +13,9 @@ export default function ProtectedRoute() {
                 <Alert variant={"danger"}>
                     <h1>Sie sind nicht mehr angemeldet!</h1>
                     <br/>
-                    bitte klicken sie
-                    <Alert.Link href="/"> hier </Alert.Link>
-                    um auf die Hauptseite zu gelangen
+                    <a>Bitte klicken Sie </a>
+                    <Alert.Link href="/">hier</Alert.Link>
+                    <a> um auf die Hauptseite zu gelangen</a>
                 </Alert>
             </div>
         </div>

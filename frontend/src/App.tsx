@@ -6,6 +6,8 @@ import Home from "./Pages/Home/Home";
 import ProtectedRoute from "./Pages/ProtectedRoutes/ProtectedRoute.tsx";
 import TicketOverview from "./Pages/TicketOverview/TicketOverview";
 import News from "./Pages/News/News.tsx";
+import './App.css'
+
 function App() {
     return (
         <UserProvider>

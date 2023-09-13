@@ -1,6 +1,6 @@
 import './TicketOverview.css'
 import Navigationbar from "../../components/Navigationbar/Navigationbar.tsx";
-import {Button, Table} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {ChangeEvent, useEffect, useState} from "react";
 import axios from "axios";
 import ModalCreateTicket from "../../components/ModalCeateTicket/ModalCreateTicket.tsx";
@@ -141,43 +141,44 @@ export default function TicketOverview() {
     return (
         <div>
             <Navigationbar/>
-            <div>
-                <Button style={{width: '150px', height: '50px'}} variant="success"
-                        onClick={() => setCreateTicketModal(true)}>
+            <div className={"btnCreateTicketDiv"}>
+                <button className={"btnCreateTicket"} onClick={() => setCreateTicketModal(true)}>
                     Ticket erstellen
-                </Button>
+                </button>
                 <ModalCreateTicket onHide={() => setCreateTicketModal(false)} show={createTicketModal}
                                    setTickets={setTickets}/>
             </div>
             <div>
-                <Table striped bordered hover variant="light">
-                    <thead>
-                    <tr>
-                        <th id={"w100"}>Ticket-ID</th>
-                        <th id={"w220"}>Datum & Uhrzeit</th>
-                        <th id={"wauto"}>Problem</th>
-                        <th id={"w220"}>Abteilung</th>
-                        <th id={"w100"}>Anrede</th>
-                        <th id={"wauto"}>Last Name</th>
-                        <th id={"wauto"}>First Name</th>
-                        <th id={"w100"}>Details</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {currentTickets.length === 0
-                        ? <tr>
-                            <td>Loading...</td>
+                <div className={"tableDiv"}>
+                    <table className={"table"}>
+                        <thead>
+                        <tr>
+                            <th id={"w100"}>Ticket-ID</th>
+                            <th id={"w220"}>Datum & Uhrzeit</th>
+                            <th id={"wauto"}>Problem</th>
+                            <th id={"w220"}>Abteilung</th>
+                            <th id={"w100"}>Anrede</th>
+                            <th id={"wauto"}>Last Name</th>
+                            <th id={"wauto"}>First Name</th>
+                            <th id={"w100"}>Details</th>
                         </tr>
-                        : currentTickets.map(newTicket => {
-                            const correspondingUser = users?.find(user => user.id === newTicket.userID);
-                            if (correspondingUser) {
-                                return <TicketTableRow key={newTicket.id} ticket={newTicket} user={correspondingUser}/>;
-                            }
-                            return null;
-                        })
-                    }
-                    </tbody>
-                </Table>
+                        </thead>
+                        <tbody>
+                        {currentTickets.length === 0
+                            ? <tr>
+                                <td>Loading...</td>
+                            </tr>
+                            : currentTickets.map(newTicket => {
+                                const correspondingUser = users?.find(user => user.id === newTicket.userID);
+                                if (correspondingUser) {
+                                    return <TicketTableRow key={newTicket.id} ticket={newTicket} user={correspondingUser}/>;
+                                }
+                                return null;
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
                 <div className="flex-container">
                     <div className={"ticket-footer"}>
                         <div className="pagination">

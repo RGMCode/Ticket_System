@@ -1,10 +1,17 @@
 
+.carousel {
+    margin-top: 60px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
 
 .carousel-image {
     width: 100% !important;
     height: 500px !important;
     object-fit: cover !important;
-    /*border-radius: 35px;*/
 }
 
 .carousel-caption {

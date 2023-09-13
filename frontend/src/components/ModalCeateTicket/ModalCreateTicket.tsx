@@ -291,9 +291,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-                        <Button type={"submit"} variant={"success"} onClick={props.onHide}>Ticket erstellen</Button>
-                        <Button variant={"warning"} onClick={props.onHide}>Close Modal</Button>
-
+                        <Button type={"submit"} variant={"info"} onClick={props.onHide}>Ticket erstellen</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

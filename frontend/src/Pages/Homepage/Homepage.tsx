@@ -85,6 +85,35 @@ export default function Homepage() {
                     </Card>
                 </CardGroup>
             </div>
+            <div className="featured-section">
+                <h2>Featured Artikel</h2>
+                <div className="featured-article">
+                    <img src="url-zum-featured-bild.jpg" alt="Featured Artikel"/>
+                    <div className="article-content">
+                        <h3>Artikelüberschrift</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna nec erat tincidunt
+                            euismod.
+                        </p>
+                        <a href="#" className="read-more-link">Mehr lesen</a>
+                    </div>
+                </div>
+
+                {/* Weitere featured Artikel hinzufügen */}
+            </div>
+
+            <div className="contact-section">
+                <h2>Kontaktieren Sie uns</h2>
+                <p>
+                    Haben Sie Fragen oder Anmerkungen? Kontaktieren Sie uns gerne!
+                </p>
+                <button className="contact-button">Kontaktieren</button>
+            </div>
+
+            <footer className="footer">
+
+            </footer>
+
         </div>
     );
 }

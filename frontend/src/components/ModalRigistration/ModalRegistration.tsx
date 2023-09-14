@@ -31,65 +31,67 @@ export default function ModalLogin(props: ModalRegProps) {
 
     const nav = useNavigate();
 
-    function onChangeHandlerUserTitel(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserTitel(event: ChangeEvent<HTMLInputElement>) {
         setUserTitel(event.target.value)
     }
 
-    function onChangeHandlerUserSalutation(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserSalutation(event: ChangeEvent<HTMLInputElement>) {
         setUserSalutation(event.target.value)
     }
 
-    function onChangeHandlerUserLastName(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserLastName(event: ChangeEvent<HTMLInputElement>) {
         setUserLastName(event.target.value)
     }
 
-    function onChangeHandlerUserFirstName(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserFirstName(event: ChangeEvent<HTMLInputElement>) {
         setUserFirstName(event.target.value)
     }
 
-    function onChangeHandlerUserDepartment(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserDepartment(event: ChangeEvent<HTMLInputElement>) {
         setUserDepartment(event.target.value)
     }
 
-    function onChangeHandlerUserLocation(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserLocation(event: ChangeEvent<HTMLInputElement>) {
         setUserLocation(event.target.value)
     }
 
-    function onChangeHandlerUserBuilding(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserBuilding(event: ChangeEvent<HTMLInputElement>) {
         setUserBuilding(event.target.value)
     }
 
-    function onChangeHandlerUserRoom(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserRoom(event: ChangeEvent<HTMLInputElement>) {
         setUserRoom(event.target.value)
     }
 
-    function onChangeHandlerUserPhoneNumber(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserPhoneNumber(event: ChangeEvent<HTMLInputElement>) {
         setUserPhoneNumber(event.target.value)
     }
 
-    function onChangeHandlerUserEMail(event: ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserEMail(event: ChangeEvent<HTMLInputElement>) {
         setUserEMail(event.target.value)
     }
 
-    function onChangeHandlerUserLoginName(event:ChangeEvent<HTMLInputElement>){
+    function onChangeHandlerUserLoginName(event: ChangeEvent<HTMLInputElement>) {
         setUserLoginName(event.target.value)
     }
 
-    function onChnageHandlerUserPassword(event:ChangeEvent<HTMLInputElement>){
+    function onChnageHandlerUserPassword(event: ChangeEvent<HTMLInputElement>) {
         setUserPassword(event.target.value)
     }
 
-    function registration(event:FormEvent<HTMLFormElement>){
+    function registration(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        axios.post("/api/user/register", {userTitel, userSalutation, userLastName,
-                                                    userFirstName, userDepartment, userLocation,
-                                                    userBuilding, userRoom, userPhoneNumber,
-                                                    userEMail, userLoginName, userPassword })
+        axios.post("/api/user/register", {
+            userTitel, userSalutation, userLastName,
+            userFirstName, userDepartment, userLocation,
+            userBuilding, userRoom, userPhoneNumber,
+            userEMail, userLoginName, userPassword
+        })
             .then(() => nav("/"))
             .catch((error) => console.log(error));
     }
 
-    return(
+    return (
         <div>
             <Modal
                 {...props}
@@ -117,11 +119,11 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Anrede:
                                     </Form.Label>
-                                    <input type={"text"} id={"userSalutation"} required={true} onChange={onChangeHandlerUserSalutation}/>
+                                    <input type={"text"} id={"userSalutation"} required={true}
+                                           onChange={onChangeHandlerUserSalutation}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
@@ -129,17 +131,18 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Nachname:
                                     </Form.Label>
-                                    <input type="text" id={"userLastName"} required={true} onChange={onChangeHandlerUserLastName}/>
+                                    <input type="text" id={"userLastName"} required={true}
+                                           onChange={onChangeHandlerUserLastName}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Vorname:
                                     </Form.Label>
-                                    <input type="text" id={"userFirstName"} required={true} onChange={onChangeHandlerUserFirstName}/>
+                                    <input type="text" id={"userFirstName"} required={true}
+                                           onChange={onChangeHandlerUserFirstName}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
@@ -153,11 +156,11 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Gebäude:
                                     </Form.Label>
-                                    <input type="text" id={"userBuilding"} required={true} onChange={onChangeHandlerUserBuilding}/>
+                                    <input type="text" id={"userBuilding"} required={true}
+                                           onChange={onChangeHandlerUserBuilding}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
@@ -165,17 +168,18 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Abteilung:
                                     </Form.Label>
-                                    <input type="text" id={"userDepartment"} required={true} onChange={onChangeHandlerUserDepartment}/>
+                                    <input type="text" id={"userDepartment"} required={true}
+                                           onChange={onChangeHandlerUserDepartment}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Raum:
                                     </Form.Label>
-                                    <input type="text" id={"userRoom"} required={true} onChange={onChangeHandlerUserRoom}/>
+                                    <input type="text" id={"userRoom"} required={true}
+                                           onChange={onChangeHandlerUserRoom}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
@@ -183,17 +187,18 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Telefon:
                                     </Form.Label>
-                                    <input type="text" id={"userPhoneNumber"} required={true} onChange={onChangeHandlerUserPhoneNumber}/>
+                                    <input type="text" id={"userPhoneNumber"} required={true}
+                                           onChange={onChangeHandlerUserPhoneNumber}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         E-Mail:
                                     </Form.Label>
-                                    <input type="text" id={"userEMail"} required={true} onChange={onChangeHandlerUserEMail}/>
+                                    <input type="text" id={"userEMail"} required={true}
+                                           onChange={onChangeHandlerUserEMail}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
@@ -201,20 +206,19 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Loginname:
                                     </Form.Label>
-                                    <input type="text" id={"userDepartment"} required={true} onChange={onChangeHandlerUserLoginName}/>
+                                    <input type="text" id={"userDepartment"} required={true}
+                                           onChange={onChangeHandlerUserLoginName}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Password:
                                     </Form.Label>
-                                    <input type="text" id={"userRoom"} required={true} onChange={onChnageHandlerUserPassword}/>
+                                    <input type="text" id={"userRoom"} required={true}
+                                           onChange={onChnageHandlerUserPassword}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-
-
-                        <Button type={"submit"} variant={"success"} onClick={props.onHide}>regristrieren</Button>
-                        <Button  variant={"warning"} onClick={props.onHide}>Close Modal</Button>
+                        <Button type={"submit"} variant={"info"} onClick={props.onHide}>regristrieren</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

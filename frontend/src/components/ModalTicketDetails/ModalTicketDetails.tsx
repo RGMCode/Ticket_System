@@ -133,9 +133,9 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                                     detaillierte Beschreibung:
                                 </Form.Label>
                                 <textarea
-                                       value={props.ticketDetails.customerDescription}
-                                       readOnly
-                                              />
+                                    value={props.ticketDetails.customerDescription}
+                                    readOnly
+                                />
                             </Row>
                         </Form.Group>
 

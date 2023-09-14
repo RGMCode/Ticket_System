@@ -5,7 +5,6 @@ import Homepage from "./Pages/Homepage/Homepage";
 import Home from "./Pages/Home/Home";
 import ProtectedRoute from "./Pages/ProtectedRoutes/ProtectedRoute.tsx";
 import TicketOverview from "./Pages/TicketOverview/TicketOverview";
-import News from "./Pages/News/News.tsx";
 import './App.css'
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
                 <Route path={'/'} element={<Homepage />} />
                     <Route element={<ProtectedRoute />}>
                     <Route path={'/home'} element={<Home />} />
-                    <Route path={'/news'} element={<News />} />
                     <Route path={'/ticketoverview'} element={<TicketOverview />} />
                 </Route>
             </Routes>

@@ -92,18 +92,61 @@
     }
 }
 
+.searchbar {
+    width: 300px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 35px 0 0 35px;
+    text-align: center;
+    margin-right: -5px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Stile für den "Clear"-Button */
+.btnClear {
+    width: 100px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 0 35px 35px 0;
+    margin-right: 15px;
+    background-color: #8bd6fa;
+    color: #ffffff;
+    cursor: pointer;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.btnClear:not(.pulse) {
+    animation: none;
+}
 
 .btnCreateTicket {
     font-size: 20px;
     color: #020405;
     width: 150px;
-    height: 50px;
+    height: 35px;
     margin-top: 65px;
     background-color: #60d0ff;
     border-radius: 35px;
     border: 2px solid #555555;
     animation: waveChange 10s infinite;
     transition: background-color 0.3s;
+    text-align: center;
+    vertical-align: center;
 }
 
 .btnCreateTicket:hover {
@@ -111,7 +154,7 @@
     animation-play-state: paused;
 }
 
-#w100{
+#w100 {
     width: 100px;
     text-align: center;
 }
@@ -121,9 +164,23 @@
     text-align: center;
 }
 
-#wauto{
+#wauto {
     width: auto;
     text-align: center;
+}
+
+.btnTicketDetails {
+    height: 33px;
+    border: 2px solid #9adcff;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+.btnTicketDetails:hover {
+    height: 33px;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    background-color: #db34d3;
 }
 
 .tableDiv {
@@ -144,12 +201,12 @@
     overflow: hidden;
 }
 
-.table th{
+.table th {
     border: solid 1px #1e5567;
     background-color: #369abd;
 }
 
-.table td{
+.table td {
     border: solid 1px #369abd;
 }
 
@@ -162,6 +219,10 @@
     vertical-align: middle;
 }
 
+.table tr {
+    height: 40px; /* Ändere diese Zahl entsprechend deinen Anforderungen */
+}
+
 .table tr:hover td {
     background-color: #60d0ff;
 }
@@ -169,6 +230,44 @@
 .flex-container {
     display: flex;
     justify-content: center;
-    height: 100vh;
+    /*height: 100vh;*/
     text-align: center;
 }
+.pagination {
+    text-align: center;
+    vertical-align: center;
+}
+
+.btnNavVorZurueck {
+    height:30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btnNavVorZurueck:hover {
+    height:30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: #c534db;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+}
+
+/*.ticket-footer {*/
+/*    text-align: center;*/
+/*    padding: 10px;*/
+/*    background-color: #f0f0f0;*/
+/*    width: 100%;*/
+/*    !*position: absolute;*!*/
+/*    bottom: 0;*/
+/*}*/
+
+
+

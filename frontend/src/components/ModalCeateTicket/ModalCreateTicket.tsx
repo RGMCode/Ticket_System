@@ -8,6 +8,7 @@ type ModalCreate = {
     onHide: () => void;
     show: boolean;
     setTickets: (newTicket: TicketData[]) => void;
+    refreshTickets: () => void;
 }
 
 export default function ModalCreateTicket(props: ModalCreate) {
@@ -22,13 +23,11 @@ export default function ModalCreateTicket(props: ModalCreate) {
                 method: "get",
                 url: "http://localhost:5173/api/user/me2",
             });
-            console.log("Antwort von /api/user/me2:", response.data);
             setUserLoginname(response.data);
             const res = await axios({
                 method: 'get',
                 url: `http://localhost:5173/api/user/user/${response.data}`,
             });
-            console.log("Antwort von /api/user/user/:id", res.data);
             setUserID(res.data.id);
             setUserData(res.data);
         } catch (error) {
@@ -141,10 +140,12 @@ export default function ModalCreateTicket(props: ModalCreate) {
         })
             .then(() => {
                 axios.get('/api/ticket')
-                    .then((response) => props.setTickets(response.data))
-                console.log(props.setTickets)
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    .then((_response) => {
+                        props.refreshTickets();
+                    })
             })
-            .catch((error) => console.log(error));
+
     }
 
     return (
@@ -182,7 +183,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
                                 <Col>
@@ -204,7 +204,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
                                 <Col>
@@ -224,7 +223,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
@@ -247,7 +245,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
                                 <Col>
@@ -269,7 +266,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
                                 <Form.Label column sm="2">
@@ -279,7 +275,6 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                        required={true}/>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>

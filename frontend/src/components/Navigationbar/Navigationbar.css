@@ -39,8 +39,7 @@
 
 .navbar a:hover {
     background-color: #369abd;
-    animation: none; /* Deaktivieren Sie die Regenbogenanimation beim Überfahren */
-    border-color: #9adcff; /* Ändern Sie die Border-Color beim Überfahren */
+    /*animation: none;*/
 }
 
 @keyframes rainbow {

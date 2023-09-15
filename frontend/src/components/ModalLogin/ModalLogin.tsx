@@ -1,5 +1,5 @@
 import {useState, FormEvent, ChangeEvent} from 'react';
-import {Modal, Form, Button} from 'react-bootstrap';
+import {Modal, Form, Button, Alert,} from 'react-bootstrap';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {useUser} from '../../UserContext.tsx';
@@ -13,8 +13,13 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
     const {setUser} = useUser();
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleClose = () => {
+        setShowAlert(false);
+        onHide();
+    };
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -26,36 +31,67 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
             }
         } catch (error) {
             console.log('Login failed:', error);
+            setShowAlert(true);
+            // Clear the username and password fields on failed login
+            setUsername('');
+            setPassword('');
         }
     };
 
     return (
         <Modal
-            onHide={onHide}
+            onHide={handleClose}
             show={show}
             aria-labelledby="contained-modal-title-vcenter"
             size={'lg'}
-            centered>
+            centered
+        >
             <Modal.Header closeButton>
-                <Modal.Title><h1>Login</h1></Modal.Title>
+                <Modal.Title>
+                    <h1>Login</h1>
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
-                        <Form.Control type="text"
-                                      onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}/>
+                        <Form.Control
+                            type="text"
+                            value={username} // Use the controlled component approach
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+                        />
                     </Form.Group>
                     <Form.Group controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
-                        <Form.Control type="password"
-                                      onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
+                        <Form.Control
+                            type="password"
+                            value={password} // Use the controlled component approach
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                        />
                     </Form.Group>
                     <br/>
-                    <Button type="submit" variant={"info"}>Login</Button>
+                    <Button type="submit" variant="info">
+                        Login
+                    </Button>
                 </Form>
             </Modal.Body>
+            <div className="d-flex justify-content-center mt-3">
+                {showAlert && (
+                    <Alert
+                        variant="danger"
+                        onClose={() => setShowAlert(false)}
+                        style={{textAlign: 'center'}}
+                        dismissible
+                    >
+                        <Alert.Heading>Logindaten nicht korrekt!</Alert.Heading>
+                        <p>
+                            Bitte stellen Sie sicher, dass Sie Ihren Benutzernamen und Ihr<br/>
+                            Passwort korrekt eingegeben haben, um sich anzumelden. <br/>
+                            Falsche Eingaben können zu Login-Problemen führen.
+                        </p>
+                    </Alert>
+                )}
+            </div>
         </Modal>
     );
 }
-

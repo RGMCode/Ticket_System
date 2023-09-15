@@ -162,3 +162,43 @@
         display: flex;
     }
 }
+
+
+.parallax {
+    background-image: url('../../pictures/MRG_Code_Logo.png'); /* Parallax-Hintergrundbild einfügen */
+    background-attachment: fixed; /* Hintergrundbild bleibt fest */
+    /*background-size: cover; !* Hintergrundbildgröße anpassen *!*/
+    background-position: center; /* Bild in der Mitte zentrieren */
+    height: 350px; /* Höhe anpassen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff; /* Textfarbe auf Weiß setzen */
+    /*filter: blur(10px);*/
+}
+
+.break {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #E4F4FF;
+}
+
+.break-item {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+    width: 30vw;
+    height: auto;
+    border-radius: 30px;
+    text-align: center;
+    background-color: #b4def3;
+}
+
+
+
+/* Other styles for .break, .break-item, etc. */
+
+

@@ -1,6 +1,5 @@
 import Carousels from "../../components/Carousels/Carousels.tsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card, CardGroup} from "react-bootstrap";
 import {useState} from "react";
 import ModalLogin from "../../components/ModalLogin/ModalLogin.tsx";
 import ModalRegistration from '../../components/ModalRigistration/ModalRegistration.tsx'
@@ -41,77 +40,64 @@ export default function Homepage() {
                     <ModalRegistration onHide={() => setRegistrationModal(false)} show={registrationModal}/>
                 </div>
             </div>
-            <div>
-                <CardGroup>
-                    <Card border="info" style={{margin: '5px', width: '15rem'}}>
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title>Info Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card bg={'info'} style={{margin: '5px', width: '18rem'}} className="mb-2">
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title> Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card border={"warning"} style={{margin: '5px', width: '18rem'}} className="mb-2">
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title> Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card bg={'warning'} style={{margin: '5px', width: '18rem'}} className="mb-2">
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title> Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </CardGroup>
-            </div>
-            <div className="featured-section">
-                <h2>Featured Artikel</h2>
-                <div className="featured-article">
-                    <img src="url-zum-featured-bild.jpg" alt="Featured Artikel"/>
-                    <div className="article-content">
-                        <h3>Artikelüberschrift</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna nec erat tincidunt
-                            euismod.
-                        </p>
-                        <a href="#" className="read-more-link">Mehr lesen</a>
+
+            {/*<div className="parallax"></div>*/}
+
+            <div className={"breakParalaxx"}>
+                <div className={"break"}>
+                    <div className={"break-item"}>
+                        <h1>Lorem ipsum</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                            sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div className={"break-item"}>
+                        <h1>Lorem ipsum</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                            sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div className={"break-item"}>
+                        <h1>Lorem ipsum</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                            sanctus est Lorem ipsum dolor sit amet.</p>
                     </div>
                 </div>
-
-                {/* Weitere featured Artikel hinzufügen */}
             </div>
 
-            <div className="contact-section">
-                <h2>Kontaktieren Sie uns</h2>
-                <p>
-                    Haben Sie Fragen oder Anmerkungen? Kontaktieren Sie uns gerne!
-                </p>
-                <button className="contact-button">Kontaktieren</button>
-            </div>
+            <div className="parallax"></div>
 
-            <footer className="footer">
-
+            <footer className={"footer"}>
+                <div className={"footerDiv"}>
+                    <div className={"kontaktDiv"}>
+                        <h4>Kontakt:</h4>
+                        <p>Lorem Ipsum  <br/>
+                           Lorem Ipsum 123 <br/>
+                           54321 - Lorem Ipsum <br/>
+                           Germany <br/>
+                           Tel.: +49 12345 67890 <br/>
+                           E-Mail: Lorem@Ipsum.dolor
+                        </p>
+                    </div>
+                    <div>2345678901</div>
+                    <div>3456789012</div>
+                </div>
             </footer>
 
         </div>

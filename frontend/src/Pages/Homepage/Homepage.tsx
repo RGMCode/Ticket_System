@@ -83,9 +83,18 @@ export default function Homepage() {
 
             <div className="parallax"></div>
 
-            <footer>
-                <div>
-                    <div>1234567890</div>
+            <footer className={"footer"}>
+                <div className={"footerDiv"}>
+                    <div className={"kontaktDiv"}>
+                        <h4>Kontakt:</h4>
+                        <p>Lorem Ipsum  <br/>
+                           Lorem Ipsum 123 <br/>
+                           54321 - Lorem Ipsum <br/>
+                           Germany <br/>
+                           Tel.: +49 12345 67890 <br/>
+                           E-Mail: Lorem@Ipsum.dolor
+                        </p>
+                    </div>
                     <div>2345678901</div>
                     <div>3456789012</div>
                 </div>

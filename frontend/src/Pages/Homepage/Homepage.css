@@ -135,7 +135,7 @@
     .navbar-Homepage {
         display: flex;
         justify-content: space-between;
-        align-items: center; /* fügt vertikale Zentrierung hinzu */
+        align-items: center;
         padding: 15px 20px;
         background-color: #202a31;
     }
@@ -165,16 +165,16 @@
 
 
 .parallax {
-    background-image: url('../../pictures/MRG_Code_Logo.png'); /* Parallax-Hintergrundbild einfügen */
-    background-attachment: fixed; /* Hintergrundbild bleibt fest */
-    /*background-size: cover; !* Hintergrundbildgröße anpassen *!*/
-    background-position: center; /* Bild in der Mitte zentrieren */
-    height: 350px; /* Höhe anpassen */
+    background-image: url('../../pictures/MRG_Code_Logo.png');
+    background-attachment: fixed;
+    /*background-size: cover;*/
+    background-position: center;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff; /* Textfarbe auf Weiß setzen */
+    color: #fff;
     /*filter: blur(10px);*/
 }
 
@@ -196,9 +196,4 @@
     text-align: center;
     background-color: #b4def3;
 }
-
-
-
-/* Other styles for .break, .break-item, etc. */
-
 

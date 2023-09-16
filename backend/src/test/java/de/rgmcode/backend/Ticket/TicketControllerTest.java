@@ -1,17 +1,21 @@
 package de.rgmcode.backend.Ticket;
 
+import de.rgmcode.backend.IdService.IdService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,13 +27,13 @@ class TicketControllerTest {
 
     @BeforeEach
     void setUp() {
-        ticketService = Mockito.mock(TicketService.class);
+        ticketService = mock(TicketService.class);
         mockMvc = MockMvcBuilders.standaloneSetup(new TicketController(ticketService)).build();
     }
 
     @Test
     void getAllTickets() throws Exception {
-        // Mocking data
+        // Given
         Ticket ticket1 = new Ticket(
                 "987654",
                 "434t5r435z45h4h4g4hejtrjeh4h",
@@ -95,10 +99,10 @@ class TicketControllerTest {
         );
         List<Ticket> tickets = Arrays.asList(ticket1, ticket2);
 
-        // Mocking service method
+        // When
         when(ticketService.getAllTickets()).thenReturn(tickets);
 
-        // Perform GET request
+        // Then
         mockMvc.perform(MockMvcRequestBuilders.get("/api/ticket")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -106,6 +110,81 @@ class TicketControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value("123456"));
     }
 
+    @Test
+    public void test_add_ticket_with_all_required_fields() {
+        // Given
+        TicketService ticketService = mock(TicketService.class);
+        TicketRepository ticketRepository = mock(TicketRepository.class);
+        IdService idService = mock(IdService.class);
+        when(ticketService.getAllTickets()).thenReturn(new ArrayList<>());
+        when(ticketService.addTicket(any(Ticket.class))).thenAnswer(invocation -> {
+            Ticket ticket = invocation.getArgument(0);
+            ticket.setId("1");
+            ticket.setTicketUUID("123456");
+            ticket.setTicketDate("2023-09-16");
+            ticket.setTicketTime("12:00:00");
+            return ticket;
+        });
 
+        // When
+        TicketController ticketController = new TicketController(ticketService);
+        Ticket ticket = new Ticket(
+                "1",
+                "123456",
+                "2023-09-16",
+                "12:00:00",
+                "user123",
+                "Prof.",
+                "Mr.",
+                "Doe",
+                "John",
+                "IT",
+                "Büsum",
+                "Building A",
+                "101",
+                "1234567890",
+                "john.doe@example.com",
+                "unit123",
+                "Test Ticket",
+                "Test Test Description",
+                "Open",
+                "Smoth",
+                "Jane",
+                "ok",
+                "-ok",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+        );
+        ticket.setUserID("user123");
+        ticket.setUserTitle("Prof.");
+        ticket.setUserSalutation("Mr.");
+        ticket.setUserLastName("Doe");
+        ticket.setUserFirstName("John");
+        ticket.setUserDepartment("IT");
+        ticket.setUserLocation("Büsum");
+        ticket.setUserBuilding("Building A");
+        ticket.setUserRoom("101");
+        ticket.setUserPhoneNumber("1234567890");
+        ticket.setUserEMail("john.doe@example.com");
+        ticket.setUnitID("unit123");
+        ticket.setCustomerHeadline("Test Ticket");
+        ticket.setCustomerDescription("Test Test Description");
+        ticket.setTicketStatus("Open");
+        ticket.setProcessingEmployeeLastName("Smith");
+        ticket.setProcessingEmployeeFirstName("Jane");
+
+        Ticket result = ticketController.addTicket(ticket);
+
+        // Then
+        assertNotNull(result);
+        assertEquals("1", result.getId());
+        assertEquals("123456", result.getTicketUUID());
+        assertEquals("2023-09-16", result.getTicketDate());
+        assertEquals("12:00:00", result.getTicketTime());
+    }
 
 }

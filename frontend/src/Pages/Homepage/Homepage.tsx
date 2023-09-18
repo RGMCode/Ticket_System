@@ -96,7 +96,7 @@ export default function Homepage() {
                         </p>
                     </div>
                     <div className={"kontaktDiv"}>
-                        <h4>Lorem Ipsum:</h4>
+                        <h4>Social Media:</h4>
                         <p>Lorem Ipsum  <br/>
                            Lorem Ipsum  <br/>
                            Lorem Ipsum <br/>
@@ -106,7 +106,7 @@ export default function Homepage() {
                         </p>
                     </div>
                     <div className={"kontaktDiv"}>
-                        <h4>Lorem Ipsum:</h4>
+                        <h4>Informationen:</h4>
                         <p>Lorem Ipsum  <br/>
                            Lorem Ipsum  <br/>
                            Lorem Ipsum <br/>

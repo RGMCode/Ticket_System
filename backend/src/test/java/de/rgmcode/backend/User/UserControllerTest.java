@@ -1,10 +1,8 @@
 package de.rgmcode.backend.User;
 
 import jakarta.servlet.http.HttpSession;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import org.mockito.Mockito;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -16,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
 
 public class UserControllerTest {
 
@@ -83,7 +83,7 @@ public class UserControllerTest {
                 "Room 101",         // userRoom
                 "123-456-7890",     // userPhoneNumber
                 "johndoe@email.com",// userEMail
-                userLoginName,      // userLoginName
+                "userLoginName",      // userLoginName
                 "password123",      // userPassword
                 "User"              // userRole
         );
@@ -144,6 +144,48 @@ public class UserControllerTest {
         assertEquals("logged out", result);
 
         verify(httpSession, times(1)).invalidate();
+    }
+
+    private UserService userService;
+    private UserController userController;
+
+    @BeforeEach
+    void setUp() {
+        userService = Mockito.mock(UserService.class);
+        userController = new UserController(userService);
+    }
+
+    @Test
+    public void test_add_new_user_with_unique_username_and_valid_values() {
+        // Given
+        User user = new User(
+                "1",                // id
+                "uuid123",          // userUUID
+                "2023-09-13",       // userRegistrationDate
+                "10:00 AM",         // userRegistrationTime
+                "Mr.",              // userTitle
+                "Mr.",              // userSalutation
+                "Doe",              // userLastName
+                "John",             // userFirstName
+                "IT",               // userDepartment
+                "Location A",       // userLocation
+                "Building 1",       // userBuilding
+                "Room 101",         // userRoom
+                "123-456-7890",     // userPhoneNumber
+                "johndoe@email.com",// userEMail
+                "john.doe",         // userLoginName
+                "password",         // userPassword
+                "User"              // userRole
+        );
+
+        // Mock the behavior of userService
+        when(userService.addNewUser(user)).thenReturn(user);
+
+        // When
+        String result = userController.addNewUser(user);
+
+        // Then
+        assertEquals("john.doe", result);
     }
 
 }

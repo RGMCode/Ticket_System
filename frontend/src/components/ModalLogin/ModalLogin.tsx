@@ -3,6 +3,7 @@ import {Modal, Form, Button, Alert,} from 'react-bootstrap';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {useUser} from '../../UserContext.tsx';
+import './ModalLogin.css'
 
 type ModalLoginProps = {
     onHide: () => void;
@@ -46,24 +47,27 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
             size={'lg'}
             centered
         >
-            <Modal.Header closeButton>
+            <Modal.Header className={"headerLogin"} closeButton>
                 <Modal.Title>
                     <h1>Login</h1>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={handleSubmit}>
+                <Form style={{marginLeft:'20px'}} onSubmit={handleSubmit}>
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
                         <Form.Control
+                            className={"inputField"}
                             type="text"
                             value={username} // Use the controlled component approach
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
                     <Form.Group controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
                         <Form.Control
+                            className={"inputField"}
                             type="password"
                             value={password} // Use the controlled component approach
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}

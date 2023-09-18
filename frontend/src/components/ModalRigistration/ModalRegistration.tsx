@@ -3,6 +3,7 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import Row from "react-bootstrap/Row";
+import './ModalRegistration.css';
 
 type ModalRegProps = {
     onHide: () => void;
@@ -99,27 +100,27 @@ export default function ModalLogin(props: ModalRegProps) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton>
+                <Modal.Header className={"headerREG"} closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         <h1>Registrierung</h1>
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form onSubmit={registration}>
+                    <Form style={{marginLeft:'110px'}} onSubmit={registration}>
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Titel:
                                     </Form.Label>
-                                    <input type={"text"} id={"userTitel"} onChange={onChangeHandlerUserTitel}/>
+                                    <input className={"inputField"} type={"text"} id={"userTitel"} onChange={onChangeHandlerUserTitel}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Anrede:
                                     </Form.Label>
-                                    <input type={"text"} id={"userSalutation"} required={true}
+                                    <input className={"inputField"} type={"text"} id={"userSalutation"} required={true}
                                            onChange={onChangeHandlerUserSalutation}/>
                                 </Col>
                             </Row>
@@ -131,14 +132,14 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Nachname:
                                     </Form.Label>
-                                    <input type="text" id={"userLastName"} required={true}
+                                    <input className={"inputField"} type="text" id={"userLastName"} required={true}
                                            onChange={onChangeHandlerUserLastName}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Vorname:
                                     </Form.Label>
-                                    <input type="text" id={"userFirstName"} required={true}
+                                    <input className={"inputField"} type="text" id={"userFirstName"} required={true}
                                            onChange={onChangeHandlerUserFirstName}/>
                                 </Col>
                             </Row>
@@ -150,13 +151,13 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Standort:
                                     </Form.Label>
-                                    <input type="text" id={"userLocation"} onChange={onChangeHandlerUserLocation}/>
+                                    <input className={"inputField"} type="text" id={"userLocation"} onChange={onChangeHandlerUserLocation}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Gebäude:
                                     </Form.Label>
-                                    <input type="text" id={"userBuilding"} required={true}
+                                    <input className={"inputField"} type="text" id={"userBuilding"} required={true}
                                            onChange={onChangeHandlerUserBuilding}/>
                                 </Col>
                             </Row>
@@ -168,14 +169,14 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Abteilung:
                                     </Form.Label>
-                                    <input type="text" id={"userDepartment"} required={true}
+                                    <input className={"inputField"} type="text" id={"userDepartment"} required={true}
                                            onChange={onChangeHandlerUserDepartment}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Raum:
                                     </Form.Label>
-                                    <input type="text" id={"userRoom"} required={true}
+                                    <input className={"inputField"} type="text" id={"userRoom"} required={true}
                                            onChange={onChangeHandlerUserRoom}/>
                                 </Col>
                             </Row>
@@ -187,14 +188,14 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Telefon:
                                     </Form.Label>
-                                    <input type="text" id={"userPhoneNumber"} required={true}
+                                    <input className={"inputField"} type="text" id={"userPhoneNumber"} required={true}
                                            onChange={onChangeHandlerUserPhoneNumber}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         E-Mail:
                                     </Form.Label>
-                                    <input type="text" id={"userEMail"} required={true}
+                                    <input className={"inputField"} type="text" id={"userEMail"} required={true}
                                            onChange={onChangeHandlerUserEMail}/>
                                 </Col>
                             </Row>
@@ -206,19 +207,19 @@ export default function ModalLogin(props: ModalRegProps) {
                                     <Form.Label column sm="2">
                                         Loginname:
                                     </Form.Label>
-                                    <input type="text" id={"userDepartment"} required={true}
+                                    <input className={"inputField"} type="text" id={"userDepartment"} required={true}
                                            onChange={onChangeHandlerUserLoginName}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Password:
                                     </Form.Label>
-                                    <input type="text" id={"userRoom"} required={true}
+                                    <input className={"inputField"} type="text" id={"userRoom"} required={true}
                                            onChange={onChnageHandlerUserPassword}/>
                                 </Col>
                             </Row>
                         </Form.Group>
-                        <Button type={"submit"} variant={"info"} onClick={props.onHide}>regristrieren</Button>
+                        <Button type={"submit"} variant={"info"} onClick={props.onHide}>jetzt regristrieren</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

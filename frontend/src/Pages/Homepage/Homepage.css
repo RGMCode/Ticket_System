@@ -167,15 +167,10 @@
 .parallax {
     background-image: url('../../pictures/MRG_Code_Logo.png');
     background-attachment: fixed;
-    /*background-size: cover;*/
-    background-position: center;
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    /*filter: blur(10px);*/
+    background-size: auto;
+    background-position: bottom;
+    height: 730px;
+    width: auto;
 }
 
 .break {

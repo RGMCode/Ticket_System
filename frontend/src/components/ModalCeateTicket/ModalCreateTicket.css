@@ -1,0 +1,35 @@
+
+.headerMCT {
+    background-color: #60d0ff;
+    color: #369abd;
+}
+
+.inputFieldMCT{
+    width: 430px;
+    background-color: #d0edfd;
+    border-radius: 5px;
+}
+
+.inputUnitFieldMCT {
+    width: 785px;
+    margin-left: -80px;
+    background-color: #d0edfd;
+    border-radius: 5px;
+    border: 2px solid #369abd;
+}
+
+.headlineFieldMCT {
+    width: 1060px;
+    margin-left: 10px;
+    background-color: #d0edfd;
+    border-radius: 5px;
+    border: 2px solid #369abd;
+}
+
+.textareaFieldMCT {
+    width: 1060px;
+    margin-left: 10px;
+    background-color: #d0edfd;
+    border-radius: 10px 10px 0 10px;
+    border: 2px solid #369abd;
+}

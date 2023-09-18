@@ -3,6 +3,7 @@ import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import axios from "axios";
 import {TicketData, UserData} from "../../Pages/TicketOverview/TicketOverview.tsx"
 import Row from "react-bootstrap/Row";
+import './ModalCreateTicket.css'
 
 type ModalCreate = {
     onHide: () => void;
@@ -163,28 +164,28 @@ export default function ModalCreateTicket(props: ModalCreate) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton>
+                <Modal.Header className={"headerMCT"} closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         <h1>Ticket erstellen</h1>
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form onSubmit={createNewTicket}>
+                    <Form style={{marginLeft: '20px'}} onSubmit={createNewTicket}>
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Titel:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type={"text"} id={"userTitel"}
+                                    <input className={"inputFieldMCT"} type={"text"} id={"userTitel"}
                                            value={userData?.userTitle} onChange={onChangeHandlerUserTitel}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Anrede:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type={"text"} id={"userSalutation"}
+                                    <input className={"inputFieldMCT"} type={"text"} id={"userSalutation"}
                                            value={userData?.userSalutation} onChange={onChangeHandlerUserSalutation}/>
                                 </Col>
                             </Row>
@@ -196,7 +197,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Nachname:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userLastName"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userLastName"}
                                            value={userData?.userLastName} onChange={onChangeHandlerUserLastName}
                                            required={true}/>
                                 </Col>
@@ -204,7 +205,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Vorname:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userFirstName"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userFirstName"}
                                            value={userData?.userFirstName} onChange={onChangeHandlerUserFirstName}
                                            required={true}/>
                                 </Col>
@@ -217,14 +218,14 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Standort:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userLocation"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userLocation"}
                                            value={userData?.userLocation} onChange={onChangeHandlerUserLocation}/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Gebäude:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userBuilding"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userBuilding"}
                                            value={userData?.userBuilding} onChange={onChangeHandlerUserBuilding}
                                            required={true}/>
                                 </Col>
@@ -237,7 +238,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Abteilung:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userDepartment"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userDepartment"}
                                            value={userData?.userDepartment} onChange={onChangeHandlerUserDepartment}
                                            required={true}/>
                                 </Col>
@@ -245,7 +246,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Raum:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userRoom"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userRoom"}
                                            value={userData?.userRoom} onChange={onChangeHandlerUserRoom}
                                            required={true}/>
                                 </Col>
@@ -258,7 +259,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         Telefon:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userPhoneNumber"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userPhoneNumber"}
                                            value={userData?.userPhoneNumber} onChange={onChangeHandlerUserPhoneNumber}
                                            required={true}/>
                                 </Col>
@@ -266,7 +267,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                     <Form.Label column sm="2">
                                         E-Mail:
                                     </Form.Label>
-                                    <input style={{width: '300px'}} type="text" id={"userEMail"}
+                                    <input className={"inputFieldMCT"} type="text" id={"userEMail"}
                                            value={userData?.userEMail} onChange={onChangeHandlerUserEMail}
                                            required={true}/>
                                 </Col>
@@ -276,10 +277,10 @@ export default function ModalCreateTicket(props: ModalCreate) {
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
-                                <Form.Label column sm="3">
+                                <Form.Label column sm="4">
                                     Gerätebezeichnung / Gerätenummer:
                                 </Form.Label>
-                                <input style={{width:'670px'}} type="text" id={"unitID"} onChange={onChangeHandlerUnitID}
+                                <input className={"inputUnitFieldMCT"} type="text" id={"unitID"} onChange={onChangeHandlerUnitID}
                                 />
                                 </Col>
                             </Row>
@@ -290,7 +291,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                 <Form.Label column sm="2">
                                     Überschrift:
                                 </Form.Label>
-                                <input type="text" id={"customerHeadline"}
+                                <input className={"headlineFieldMCT"} type="text" id={"customerHeadline"}
                                        onChange={onChangeHandlerCustomerHeadline}
                                        required={true}/>
                             </Row>
@@ -301,7 +302,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                                 <Form.Label column sm="3">
                                     detaillierte Beschreibung:
                                 </Form.Label>
-                                <textarea id={"customerDescription"}
+                                <textarea className={"textareaFieldMCT"} id={"customerDescription"}
                                           onChange={onChangeHandlerCustomerDescription}
                                           required={true}/>
                             </Row>

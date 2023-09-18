@@ -1,0 +1,27 @@
+
+.inputField{
+    width: 430px;
+    background-color: #d0edfd;
+    border-radius: 5px;
+}
+
+.inputUnitField {
+    width: 785px;
+    margin-left: -80px;
+    background-color: #d0edfd;
+    border-radius: 5px;
+}
+
+.headlineField {
+    width: 1060px;
+    margin-left: 10px;
+    background-color: #d0edfd;
+    border-radius: 5px;
+}
+
+.textareaField {
+    width: 1060px;
+    margin-left: 10px;
+    background-color: #d0edfd;
+    border-radius: 10px 10px 0 10px;
+}

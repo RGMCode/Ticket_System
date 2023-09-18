@@ -69,6 +69,8 @@ export default function ModalCreateTicket(props: ModalCreate) {
     const [userPhoneNumber, setUserPhoneNumber] = useState("")
     const [userEMail, setUserEMail] = useState("")
 
+    const [unitID, setUnitID] = useState("")
+
     const [customerHeadline, setCustomerHeadline] = useState("")
     const [customerDescription, setCustomerDescription] = useState("")
 
@@ -113,6 +115,10 @@ export default function ModalCreateTicket(props: ModalCreate) {
         setUserEMail(event.target.value)
     }
 
+    function onChangeHandlerUnitID(event: ChangeEvent<HTMLInputElement>) {
+        setUnitID(event.target.value)
+    }
+
     function onChangeHandlerCustomerHeadline(event: ChangeEvent<HTMLInputElement>) {
         setCustomerHeadline(event.target.value)
     }
@@ -135,6 +141,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
             userRoom: userRoom,
             userPhoneNumber: userPhoneNumber,
             userEMail: userEMail,
+            unitID: unitID,
             customerHeadline: customerHeadline,
             customerDescription: customerDescription
         })
@@ -164,7 +171,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
 
                 <Modal.Body>
                     <Form onSubmit={createNewTicket}>
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
@@ -183,7 +190,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
@@ -204,7 +211,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
@@ -224,7 +231,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
@@ -245,7 +252,7 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
@@ -266,22 +273,36 @@ export default function ModalCreateTicket(props: ModalCreate) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
+                            <Row>
+                                <Col>
+                                <Form.Label column sm="3">
+                                    Gerätebezeichnung / Gerätenummer:
+                                </Form.Label>
+                                <input style={{width:'670px'}} type="text" id={"unitID"} onChange={onChangeHandlerUnitID}
+                                />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Form.Label column sm="2">
                                     Überschrift:
                                 </Form.Label>
-                                <input type="text" id={"customerHeadline"} onChange={onChangeHandlerCustomerHeadline}
+                                <input type="text" id={"customerHeadline"}
+                                       onChange={onChangeHandlerCustomerHeadline}
                                        required={true}/>
                             </Row>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-4" controlId="formUser">
                             <Row>
                                 <Form.Label column sm="3">
                                     detaillierte Beschreibung:
                                 </Form.Label>
-                                <textarea id={"customerDescription"} onChange={onChangeHandlerCustomerDescription}
+                                <textarea id={"customerDescription"}
+                                          onChange={onChangeHandlerCustomerDescription}
                                           required={true}/>
                             </Row>
                         </Form.Group>

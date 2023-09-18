@@ -1,6 +1,7 @@
 import {Col, Form, Modal} from "react-bootstrap";
 import {TicketData, UserData} from "../../Pages/TicketOverview/TicketOverview.tsx";
 import Row from 'react-bootstrap/Row';
+import './ModalTicketDetails.css'
 
 type ModalTicketDetails = {
     onHide: () => void;
@@ -21,118 +22,130 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        <h1>Ticket Details - {props.ticketDetails.id}</h1>
+                        <h1>Ticket-ID: {props.ticketDetails.id}</h1>
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form>
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                    <Form style={{marginLeft:'20px'}}>
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Titel:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userTitle} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userTitle} readOnly/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Anrede:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userSalutation} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userSalutation} readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>
 
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Nachname:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userLastName} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userLastName} readOnly/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Vorname:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userFirstName} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userFirstName} readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>
 
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Standort:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userLocation} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userLocation} readOnly/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Gebäude:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userBuilding} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userBuilding} readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>
 
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Abteilung:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userDepartment} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userDepartment} readOnly/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Raum:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userRoom} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userRoom} readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>
 
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
                                     <Form.Label column sm="2">
                                         Telefon:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userPhoneNumber} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userPhoneNumber} readOnly/>
                                 </Col>
                                 <Col>
                                     <Form.Label column sm="2">
                                         E-Mail:
                                     </Form.Label>
-                                    <input type="text" value={props.userDetails.userEMail} readOnly/>
+                                    <input className={"inputField"} type="text" value={props.userDetails.userEMail} readOnly/>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
+                            <Row>
+                                <Col>
+                                    <Form.Label column sm="4">
+                                        Gerätebezeichnung / Gerätenummer:
+                                    </Form.Label>
+                                    <input className={"inputUnitField"}  type="text" value={props.ticketDetails.unitID} readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>
 
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
-                                <Form.Label column sm="2">
+                                <Form.Label column sm="3">
                                     Überschrift:
                                 </Form.Label>
-                                <input type="text" value={props.ticketDetails.customerHeadline} readOnly/>
+                                <input className={"headlineField"} type="text" value={props.ticketDetails.customerHeadline} readOnly/>
                             </Row>
                         </Form.Group>
 
 
-                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                        <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Form.Label column sm="3">
                                     detaillierte Beschreibung:
                                 </Form.Label>
                                 <textarea
+                                    className={"textareaField"}
                                     value={props.ticketDetails.customerDescription}
                                     readOnly
                                 />

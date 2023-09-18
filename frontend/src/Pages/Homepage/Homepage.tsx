@@ -95,8 +95,26 @@ export default function Homepage() {
                            E-Mail: Lorem@Ipsum.dolor
                         </p>
                     </div>
-                    <div>2345678901</div>
-                    <div>3456789012</div>
+                    <div className={"kontaktDiv"}>
+                        <h4>Lorem Ipsum:</h4>
+                        <p>Lorem Ipsum  <br/>
+                           Lorem Ipsum  <br/>
+                           Lorem Ipsum <br/>
+                           Lorem Ipsum <br/>
+                           Lorem Ipsum <br/>
+                           Lorem Ipsum
+                        </p>
+                    </div>
+                    <div className={"kontaktDiv"}>
+                        <h4>Lorem Ipsum:</h4>
+                        <p>Lorem Ipsum  <br/>
+                           Lorem Ipsum  <br/>
+                           Lorem Ipsum <br/>
+                           Lorem Ipsum <br/>
+                           Lorem Ipsum <br/>
+                           Lorem Ipsum
+                        </p>
+                    </div>
                 </div>
             </footer>
 

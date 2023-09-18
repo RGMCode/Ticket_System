@@ -1,12 +1,8 @@
 package de.rgmcode.backend.User;
-//
 
 import jakarta.servlet.http.HttpSession;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-//
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import org.mockito.Mockito;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -18,64 +14,60 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
 
 public class UserControllerTest {
 
     @Test
     void testGetAllUsers() {
-        // Mocking
+        // Given
         UserService userService = Mockito.mock(UserService.class);
         List<User> userList = new ArrayList<>();
         when(userService.getAllUsers()).thenReturn(userList);
-
-        // Controller
         UserController userController = new UserController(userService);
 
-        // Test
+        // When
         List<User> result = userController.getAllUsers();
+
+        // Then
         assertNotNull(result);
         assertEquals(userList, result);
     }
 
     @Test
     void testGetMe1() {
-        // Mocking
+        // Given
         Principal principal = mock(Principal.class);
         when(principal.getName()).thenReturn("TestUser");
-
-        // Controller
         UserController userController = new UserController(null);
 
-        // Test
+        // When
         String result = userController.getMe1(principal);
+
+        // Then
         assertEquals("TestUser", result);
     }
 
-
     @Test
     void testGetMe2() {
-        // Mocking
+        // Given
         SecurityContext securityContext = mock(SecurityContext.class);
         SecurityContextHolder.setContext(securityContext);
         Authentication authentication = mock(Authentication.class);
         when(authentication.getName()).thenReturn("TestUser");
         when(securityContext.getAuthentication()).thenReturn(authentication);
-
-        // Controller
         UserController userController = new UserController(null);
 
-        // Test
+        // When
         String result = userController.getMe2();
+
+        // Then
         assertEquals("TestUser", result);
     }
 
-
-    @Test
-    void testGetUserData() {
-        // Mocking
-        UserService userService = Mockito.mock(UserService.class);
-        String userLoginName = "TestUser";
+    private User createUserWithLoginName(String userLoginName) {
         User user = new User(
                 "1",                // id
                 "uuid123",          // userUUID
@@ -91,62 +83,83 @@ public class UserControllerTest {
                 "Room 101",         // userRoom
                 "123-456-7890",     // userPhoneNumber
                 "johndoe@email.com",// userEMail
-                "john_doe",         // userLoginName
+                "userLoginName",      // userLoginName
                 "password123",      // userPassword
                 "User"              // userRole
         );
         user.setUserLoginName(userLoginName);
-        when(userService.getUserDataByLoginName(userLoginName)).thenReturn(Optional.of(user));
+        return user;
+    }
 
-        // Controller
+    @Test
+    void testGetUserData() {
+        // Given
+        String userLoginName = "TestUser";
+        User expectedUser = createUserWithLoginName(userLoginName);
+
+        UserService userService = Mockito.mock(UserService.class);
+        when(userService.getUserDataByLoginName(userLoginName)).thenReturn(Optional.of(expectedUser));
+
         UserController userController = new UserController(userService);
 
-        // Test
+        // When
         Optional<User> result = userController.getUserData(userLoginName);
+
+        // Then
         assertTrue(result.isPresent());
-        assertEquals(userLoginName, result.get().getUserLoginName());
+        User actualUser = result.get();
+        assertEquals(userLoginName, actualUser.getUserLoginName());
+
+        assertEquals(expectedUser.getId(), actualUser.getId());
     }
 
     @Test
     void testLogin() {
-        // Mocking
+        // Given
         SecurityContext securityContext = mock(SecurityContext.class);
         SecurityContextHolder.setContext(securityContext);
         Authentication authentication = mock(Authentication.class);
         when(authentication.getName()).thenReturn("TestUser");
         when(securityContext.getAuthentication()).thenReturn(authentication);
-
-        // Controller
         UserController userController = new UserController(null);
 
-        // Test
+        // When
         String result = userController.login();
+
+        // Then
         assertEquals("TestUser", result);
     }
 
     @Test
     @WithMockUser(username = "testuser", password = "password", roles = "USER")
     void testLogout() {
-        // Mocking
+        // Given
         HttpSession httpSession = mock(HttpSession.class);
-
-        // Controller
         UserController userController = new UserController(null);
 
-        // Test
+        // When
         String result = userController.logout(httpSession);
+
+        // Then
         assertEquals("logged out", result);
 
-        // Verify that HttpSession.invalidate() was called
         verify(httpSession, times(1)).invalidate();
     }
 
+    private UserService userService;
+    private UserController userController;
+
+    @BeforeEach
+    void setUp() {
+        userService = Mockito.mock(UserService.class);
+        userController = new UserController(userService);
+    }
+
     @Test
-    void testAddNewUser() {
-        // Mocking
-        UserService userService = Mockito.mock(UserService.class);
-        User newUser = new User(
-                "001",                // id
+    public void test_add_new_user_with_unique_username_and_valid_values() {
+        // Given
+        User user = new User(
+                "1",                // id
                 "uuid123",          // userUUID
                 "2023-09-13",       // userRegistrationDate
                 "10:00 AM",         // userRegistrationTime
@@ -160,19 +173,19 @@ public class UserControllerTest {
                 "Room 101",         // userRoom
                 "123-456-7890",     // userPhoneNumber
                 "johndoe@email.com",// userEMail
-                "john_doe",         // userLoginName
-                "password123",      // userPassword
+                "john.doe",         // userLoginName
+                "password",         // userPassword
                 "User"              // userRole
         );
-        newUser.setUserLoginName("NewUser");
-        when(userService.addNewUser(newUser)).thenReturn(newUser);
 
-        // Controller
-        UserController userController = new UserController(userService);
+        // Mock the behavior of userService
+        when(userService.addNewUser(user)).thenReturn(user);
 
-        // Test
-        String result = userController.addNewUser(newUser);
-        assertEquals("NewUser", result);
+        // When
+        String result = userController.addNewUser(user);
+
+        // Then
+        assertEquals("john.doe", result);
     }
 
 }

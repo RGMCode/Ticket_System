@@ -27,7 +27,6 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUserLoginName(username)
@@ -56,4 +55,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findUserByUserLoginName(userLoginName);
     }
 
+    public Optional<User> gerUserRoleByLoginName(String userLoginName) {
+        return userRepository.findByUserLoginName(userLoginName);
+    }
 }

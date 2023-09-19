@@ -181,6 +181,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: #E4F4FF;
+
 }
 
 .break-item {
@@ -192,10 +193,14 @@
     border-radius: 30px;
     text-align: center;
     background-color: #b4def3;
+    border: 3px solid #369abd;
+
 }
 
 .footer {
-    background-color: #777777;
+    /*background-color: #b0b0b0;*/
+    background-color: #95A5E1;
+    border-top: 3px solid #369abd;
 }
 
 .footerDiv {
@@ -209,6 +214,7 @@
     padding: 20px;
     background-color: #E4F4FF;
     text-align: left;
-    border-radius: 15px;
+    border-radius: 25px;
+    border: 3px solid #369abd;
 }
 

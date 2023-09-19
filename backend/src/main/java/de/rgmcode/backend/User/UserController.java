@@ -44,6 +44,11 @@ public class UserController {
         return userService.getUserDataByLoginName(userLoginName);
     }
 
+    @GetMapping("/userRole/{userLoginName}")
+    public Optional<User> getUserRoleByLoginName(@PathVariable String userLoginName) {
+        return userService.gerUserRoleByLoginName(userLoginName);
+    }
+
     @PostMapping("/login")
     public String login() {
         return SecurityContextHolder.getContext().getAuthentication().getName();

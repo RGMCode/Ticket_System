@@ -91,6 +91,54 @@ public class UserControllerTest {
         return user;
     }
 
+
+    @Test
+    public void test_returns_user_with_valid_userRole_when_given_valid_userLoginName() {
+        // Given
+        String userLoginName = "john.doe";
+        User user = new User(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+        );
+        user.setUserRole("admin");
+        Mockito.when(userService.gerUserRoleByLoginName(userLoginName)).thenReturn(Optional.of(user));
+
+        // When
+        Optional<User> result = userController.getUserRoleByLoginName(userLoginName);
+
+        // Then
+        assertTrue(result.isPresent());
+        assertEquals("admin", result.get().getUserRole());
+    }
+
+    @Test
+    public void test_returns_empty_optional_when_given_nonexistent_userLoginName() {
+        // Given
+        String userLoginName = "nonexistent";
+        Mockito.when(userService.gerUserRoleByLoginName(userLoginName)).thenReturn(Optional.empty());
+
+        // When
+        Optional<User> result = userController.getUserRoleByLoginName(userLoginName);
+
+        // Then
+        assertFalse(result.isPresent());
+    }
+
     @Test
     void testGetUserData() {
         // Given
@@ -187,5 +235,6 @@ public class UserControllerTest {
         // Then
         assertEquals("john.doe", result);
     }
+
 
 }

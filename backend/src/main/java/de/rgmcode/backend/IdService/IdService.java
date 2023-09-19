@@ -25,6 +25,7 @@ public class IdService {
         this.userRepository = userRepository;
     }
 
+
     public String generateTicketUUID() {
         return UUID.randomUUID().toString();
     }

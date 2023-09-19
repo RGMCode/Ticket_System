@@ -3,6 +3,7 @@ package de.rgmcode.backend.Ticket;
 import de.rgmcode.backend.IdService.IdService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -13,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -111,6 +111,20 @@ class TicketControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value("123456"));
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Test
     public void test_add_ticket_with_all_required_fields() {
         // Given
@@ -187,5 +201,56 @@ class TicketControllerTest {
         assertEquals("2023-09-16", result.getTicketDate());
         assertEquals("12:00:00", result.getTicketTime());
     }
+
+
+
+    @Test
+    public void test_add_ticket_with_missing_required_fields() {
+        // Given
+        TicketService ticketService = mock(TicketService.class);
+        TicketController ticketController = new TicketController(ticketService);
+
+        Ticket ticket = new Ticket(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+        );
+
+        // When
+        Ticket result = ticketController.addTicket(ticket);
+
+        // Then
+        assertNull(result);
+    }
+
+
+
+
 
 }

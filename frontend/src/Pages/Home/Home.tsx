@@ -2,7 +2,6 @@ import Navigationbar from "../../components/Navigationbar/Navigationbar.tsx";
 import Carousels from "../../components/Carousels/Carousels.tsx";
 import './Home.css'
 
-
 export default function Home() {
 
     return (

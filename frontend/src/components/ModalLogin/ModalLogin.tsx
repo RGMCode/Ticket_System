@@ -16,24 +16,29 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
     const navigate = useNavigate();
     const {setUser} = useUser();
     const [showAlert, setShowAlert] = useState(false);
+    // const [userRole, setUserRole] = useState("")
 
     const handleClose = () => {
         setShowAlert(false);
         onHide();
     };
 
+
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/user/login', {}, {auth: {username, password}});
+            const response = await axios.post('/api/user/login', {}, { auth: { username, password } });
             if (response.data) {
                 setUser(username);
+                const responseUserRole = await axios.get('/api/user/userRole/' + response.data);
+                // setUserRole(responseUserRole.data.userRole);
+                // console.log("setUserRole: ", setUserRole);
+                console.log(responseUserRole.data.userRole);
                 navigate('/home');
             }
         } catch (error) {
             console.log('Login failed:', error);
             setShowAlert(true);
-            // Clear the username and password fields on failed login
             setUsername('');
             setPassword('');
         }

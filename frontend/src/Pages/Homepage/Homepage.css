@@ -166,8 +166,10 @@
 
 .parallax {
     background-image: url('../../pictures/MRG_Code_Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: auto;
+    /*background-size: auto;*/
     background-position: bottom;
     height: 730px;
     width: auto;

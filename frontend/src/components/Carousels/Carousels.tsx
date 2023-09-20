@@ -17,7 +17,7 @@ export default function Carousels() {
                         alt="HQ"
                     />
                     <Carousel.Caption>
-                        <h5>Future CloudGreen</h5>
+                        <h5>Cloud</h5>
                         <p>Image by <a href="https://www.freepik.com/free-photo/saas-concept-collage_26301279.htm#query=cloud%20tech&position=2&from_view=keyword&track=ais">Freepik</a></p>
                     </Carousel.Caption>
                 </Carousel.Item>

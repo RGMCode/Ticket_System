@@ -20,7 +20,7 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton>
+                <Modal.Header className={"headerTV"} closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         <h1>Ticket-ID: {props.ticketDetails.id}</h1>
                     </Modal.Title>
@@ -45,7 +45,6 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
@@ -62,7 +61,6 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
@@ -81,7 +79,6 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
@@ -98,7 +95,6 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                                 </Col>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
@@ -128,7 +124,6 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                             </Row>
                         </Form.Group>
 
-
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Form.Label column sm="3">
@@ -137,7 +132,6 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                                 <input className={"headlineField"} type="text" value={props.ticketDetails.customerHeadline} readOnly/>
                             </Row>
                         </Form.Group>
-
 
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>

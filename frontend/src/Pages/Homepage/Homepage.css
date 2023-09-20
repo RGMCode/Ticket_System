@@ -181,7 +181,8 @@
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: #E4F4FF;
-
+    border-bottom: 3px solid #369abd;
+    border-top: 3px solid #369abd;
 }
 
 .break-item {
@@ -201,6 +202,7 @@
     /*background-color: #b0b0b0;*/
     background-color: #95A5E1;
     border-top: 3px solid #369abd;
+    border-bottom: 3px solid #369abd;
 }
 
 .footerDiv {

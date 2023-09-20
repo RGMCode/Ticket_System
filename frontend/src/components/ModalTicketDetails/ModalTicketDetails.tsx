@@ -20,7 +20,7 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton>
+                <Modal.Header className={"headerTV"} closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         <h1>Ticket-ID: {props.ticketDetails.id}</h1>
                     </Modal.Title>

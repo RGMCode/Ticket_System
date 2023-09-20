@@ -10,7 +10,7 @@ export default function Carousels() {
     return(
         <div className={"carousel"}>
             <Carousel>
-                <Carousel.Item interval={4000} >
+                <Carousel.Item interval={3000} >
                     <img
                         className="d-block w-100 carousel-image"
                         src={SCC}
@@ -22,7 +22,7 @@ export default function Carousels() {
                     </Carousel.Caption>
                 </Carousel.Item>
 
-                <Carousel.Item interval={4000} >
+                <Carousel.Item interval={3000} >
                     <img
                         className="d-block w-100 carousel-image"
                         src={GT}
@@ -34,7 +34,7 @@ export default function Carousels() {
                     </Carousel.Caption>
                 </Carousel.Item>
 
-                <Carousel.Item interval={4000}>
+                <Carousel.Item interval={3000}>
                     <img
                         className="d-block w-100 carousel-image"
                         src={hwg}

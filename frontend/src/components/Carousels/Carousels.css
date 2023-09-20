@@ -10,8 +10,12 @@
 
 .carousel-image {
     width: 100% !important;
-    height: 500px !important;
+    height: 550px !important;
     object-fit: cover !important;
+    background-size: cover;
+    display: block;
+    margin: 0 auto;
+    object-position: center;
 }
 
 .carousel-caption {
@@ -25,5 +29,3 @@
     background-color: #b0cd4d;
     border-radius: 100%;
 }
-
-

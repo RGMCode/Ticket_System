@@ -9,5 +9,4 @@ Das Ticket-System vereinfacht Supportanfragen. Mit Login, Registrierung, Störun
 ## [▶️Video auf YouTube ansehen](https://www.youtube.com/watch?v=ovpKNmU8RBY)
 
 ### 🖥️ Projekt-TechStack:
-React, TypeScript, Java Spring Boot, Bootstrap, HTML, CSS, Swagger und Docker
-
+React, TypeScript, Java Spring Boot, MongoDB, Bootstrap, HTML, CSS, Swagger Git, GitHub und Docker

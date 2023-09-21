@@ -16,7 +16,6 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
     const navigate = useNavigate();
     const {setUser} = useUser();
     const [showAlert, setShowAlert] = useState(false);
-    // const [userRole, setUserRole] = useState("")
 
     const handleClose = () => {
         setShowAlert(false);
@@ -30,10 +29,6 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
             const response = await axios.post('/api/user/login', {}, { auth: { username, password } });
             if (response.data) {
                 setUser(username);
-                const responseUserRole = await axios.get('/api/user/userRole/' + response.data);
-                // setUserRole(responseUserRole.data.userRole);
-                // console.log("setUserRole: ", setUserRole);
-                console.log(responseUserRole.data.userRole);
                 navigate('/home');
             }
         } catch (error) {

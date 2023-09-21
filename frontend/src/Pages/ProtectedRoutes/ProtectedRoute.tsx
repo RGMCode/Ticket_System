@@ -3,7 +3,6 @@ import {useUser} from '../../UserContext';
 import {Outlet} from "react-router-dom";
 import {Alert} from "react-bootstrap";
 
-
 export default function ProtectedRoute() {
     const {user} = useUser();
 

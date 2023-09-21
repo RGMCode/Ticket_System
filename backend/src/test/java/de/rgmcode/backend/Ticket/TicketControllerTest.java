@@ -3,7 +3,6 @@ package de.rgmcode.backend.Ticket;
 import de.rgmcode.backend.IdService.IdService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -111,20 +110,6 @@ class TicketControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value("123456"));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void test_add_ticket_with_all_required_fields() {
         // Given
@@ -202,8 +187,6 @@ class TicketControllerTest {
         assertEquals("12:00:00", result.getTicketTime());
     }
 
-
-
     @Test
     public void test_add_ticket_with_missing_required_fields() {
         // Given
@@ -248,9 +231,5 @@ class TicketControllerTest {
         // Then
         assertNull(result);
     }
-
-
-
-
 
 }

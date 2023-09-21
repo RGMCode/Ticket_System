@@ -84,7 +84,9 @@ export default function Home() {
                     </div>
                     <div className="news-footer">01.06.2023</div>
                 </div>
+
             </div>
+
         </div>
     );
 }

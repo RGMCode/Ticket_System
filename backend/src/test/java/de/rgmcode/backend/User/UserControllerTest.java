@@ -17,7 +17,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
 public class UserControllerTest {
 
     @Test
@@ -90,7 +89,6 @@ public class UserControllerTest {
         user.setUserLoginName(userLoginName);
         return user;
     }
-
 
     @Test
     public void test_returns_user_with_valid_userRole_when_given_valid_userLoginName() {
@@ -226,7 +224,6 @@ public class UserControllerTest {
                 "User"              // userRole
         );
 
-        // Mock the behavior of userService
         when(userService.addNewUser(user)).thenReturn(user);
 
         // When
@@ -235,6 +232,5 @@ public class UserControllerTest {
         // Then
         assertEquals("john.doe", result);
     }
-
 
 }

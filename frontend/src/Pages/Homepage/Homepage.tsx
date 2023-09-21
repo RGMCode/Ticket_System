@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from "react";
 import ModalLogin from "../../components/ModalLogin/ModalLogin.tsx";
 import ModalRegistration from '../../components/ModalRigistration/ModalRegistration.tsx'
-import logo from "../../pictures/MRG_Code_Logo.png";
+import logo from "../../pictures/RGMCode_Logo_v2.png";
 import './Homepage.css'
 
 export default function Homepage() {

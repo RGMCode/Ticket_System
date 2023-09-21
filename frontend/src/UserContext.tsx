@@ -1,4 +1,3 @@
-
 import {createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, FC} from 'react';
 
 interface UserContextProps {

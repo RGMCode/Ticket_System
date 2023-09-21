@@ -65,7 +65,7 @@ export default function TicketOverview() {
     useEffect(() => {
         axios({
             method: "get",
-            url: "http://localhost:5173/api/ticket"
+            url: "/api/ticket"
         }).then(function (response) {
             const sortedTickets = response.data.sort((a: TicketData, b: TicketData) => {
                 return parseInt(b.id) - parseInt(a.id);
@@ -77,7 +77,7 @@ export default function TicketOverview() {
     useEffect(() => {
         axios({
             method: "get",
-            url: "http://localhost:5173/api/user"
+            url: "/api/user"
         }).then(function (response) {
             setUsers(response.data)
         })
@@ -147,7 +147,7 @@ export default function TicketOverview() {
     const refreshTickets = () => {
         axios({
             method: "get",
-            url: "http://localhost:5173/api/ticket"
+            url: "/api/ticket"
         }).then(function (response) {
             const sortedTickets = response.data.sort((a: TicketData, b: TicketData) => {
                 return parseInt(b.id) - parseInt(a.id);

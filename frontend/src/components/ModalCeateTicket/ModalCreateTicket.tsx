@@ -22,12 +22,12 @@ export default function ModalCreateTicket(props: ModalCreate) {
         try {
             const response = await axios({
                 method: "get",
-                url: "http://localhost:5173/api/user/me2",
+                url: "/api/user/me2",
             });
             setUserLoginname(response.data);
             const res = await axios({
                 method: 'get',
-                url: `http://localhost:5173/api/user/user/${response.data}`,
+                url: `/api/user/user/${response.data}`,
             });
             setUserID(res.data.id);
             setUserData(res.data);

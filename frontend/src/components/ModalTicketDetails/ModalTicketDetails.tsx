@@ -28,6 +28,7 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
 
                 <Modal.Body>
                     <Form style={{marginLeft:'20px'}}>
+
                         <Form.Group as={Row} className="mb-3" controlId="formUser">
                             <Row>
                                 <Col>
@@ -148,7 +149,9 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
 
                     </Form>
                 </Modal.Body>
+
             </Modal>
+
         </div>
     );
 

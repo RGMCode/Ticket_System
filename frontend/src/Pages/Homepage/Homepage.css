@@ -54,10 +54,8 @@
     align-items: center;
     height: 60px;
     background-color: #202a31;
-
     padding: 0 50px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
-
     width: 100%;
     position: fixed;
     top: 0;
@@ -163,13 +161,11 @@
     }
 }
 
-
 .parallax {
-    background-image: url('../../pictures/MRG_Code_Logo.png');
+    background-image: url('../../pictures/RGMCode_Logo_v2.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /*background-size: auto;*/
     background-position: bottom;
     height: 730px;
     width: auto;
@@ -199,7 +195,6 @@
 }
 
 .footer {
-    /*background-color: #b0b0b0;*/
     background-color: #95A5E1;
     border-top: 3px solid #369abd;
     border-bottom: 3px solid #369abd;
@@ -219,4 +214,3 @@
     border-radius: 25px;
     border: 3px solid #369abd;
 }
-

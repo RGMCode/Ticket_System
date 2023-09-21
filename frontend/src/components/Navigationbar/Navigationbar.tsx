@@ -2,7 +2,7 @@
 import './Navigationbar.css'
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import logo from "../../pictures/MRG_Code_Logo.png";
+import logo from "../../pictures/RGMCode_Logo_v2.png";
 import { useUser } from '../../UserContext';
 import axios from "axios";
 
@@ -33,7 +33,6 @@ export default function Navigationbar() {
                 </div>
                 <div className={`menu ${isOpen ? 'open' : ''}`}>
                     <Link to={"/home"} onClick={() => setIsOpen(false)}>Home</Link>
-                    {/*<Link to={"/news"} onClick={() => setIsOpen(false)}>News</Link>*/}
                     <Link to={"/ticketoverview"} onClick={() => setIsOpen(false)}>Tickets</Link>
                     <Link to={"/"} onClick={handleLogout}>Logout</Link>
                 </div>

@@ -82,8 +82,8 @@ export default function ModalLogin(props: ModalRegProps) {
 
     function registration(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        axios.post("/api/user/register", {
-            userTitel, userSalutation, userLastName,
+        axios.post("/api/user/register",
+            { userTitel, userSalutation, userLastName,
             userFirstName, userDepartment, userLocation,
             userBuilding, userRoom, userPhoneNumber,
             userEMail, userLoginName, userPassword

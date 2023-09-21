@@ -1,6 +1,5 @@
 package de.rgmcode.backend.IdService;
 
-import de.rgmcode.backend.CustomException.NoTicketIdAvailableException;
 import de.rgmcode.backend.Ticket.Ticket;
 import de.rgmcode.backend.Ticket.TicketRepository;
 import de.rgmcode.backend.User.UserRepository;
@@ -11,7 +10,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -120,6 +120,5 @@ class IdServiceTest {
         // Then
         assertNotNull(userUUID);
     }
-
 
 }

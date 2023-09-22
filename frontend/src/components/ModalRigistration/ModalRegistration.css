@@ -1,4 +1,8 @@
 
+.formStyle{
+    margin-left: 110px;
+}
+
 .headerREG {
     background-color: #60d0ff;
     color: #369abd;
@@ -7,4 +11,17 @@
 .inputField{
     width: 430px;
     border-radius: 5px;
+    border: 2px solid #369abd;
+}
+
+
+@media (max-width: 768px) {
+
+    .formStyle {
+        margin-left: 0;
+    }
+
+    .inputField{
+        width: 340px !important;
+    }
 }

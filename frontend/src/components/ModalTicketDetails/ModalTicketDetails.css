@@ -4,16 +4,17 @@
     color: #369abd;
 }
 
-.inputField{
+.inputField {
     width: 430px;
     background-color: #d0edfd;
     border-radius: 5px;
 }
 
-.inputUnitField {
+.inputUnitFieldTD {
     width: 785px;
     margin-left: -80px;
     background-color: #d0edfd;
+    border: 2px solid #369abd;
     border-radius: 5px;
 }
 
@@ -21,6 +22,7 @@
     width: 1060px;
     margin-left: 10px;
     background-color: #d0edfd;
+    border: 2px solid #369abd;
     border-radius: 5px;
 }
 
@@ -28,5 +30,43 @@
     width: 1060px;
     margin-left: 10px;
     background-color: #d0edfd;
+    border: 2px solid #369abd;
     border-radius: 10px 10px 0 10px;
 }
+
+
+@media screen and (max-width: 845px) {
+
+    .ticketDetails {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    .ticketDetails .modal-dialog {
+        margin: 0;
+    }
+
+    .inputUnitFieldTD {
+        width: 430px;
+        margin-left: 0;
+        background-color: #d0edfd;
+        border: 2px solid #369abd;
+        border-radius: 5px;
+    }
+
+    .headlineField{
+        width: 430px;
+    }
+
+    .textareaField{
+        width: 430px;
+    }
+
+}
+

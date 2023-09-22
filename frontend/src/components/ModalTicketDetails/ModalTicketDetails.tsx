@@ -13,7 +13,7 @@ type ModalTicketDetails = {
 
 export default function ModalTicketDetails(props: ModalTicketDetails) {
     return (
-        <div>
+        <div className={"ticketDetails"}>
             <Modal
                 {...props}
                 size="xl"
@@ -120,7 +120,7 @@ export default function ModalTicketDetails(props: ModalTicketDetails) {
                                     <Form.Label column sm="4">
                                         Gerätebezeichnung / Gerätenummer:
                                     </Form.Label>
-                                    <input className={"inputUnitField"}  type="text" value={props.ticketDetails.unitID} readOnly/>
+                                    <input className={"inputUnitFieldTD"}  type="text" value={props.ticketDetails.unitID} readOnly/>
                                 </Col>
                             </Row>
                         </Form.Group>

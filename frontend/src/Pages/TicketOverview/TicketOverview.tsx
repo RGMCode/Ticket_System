@@ -161,7 +161,7 @@ export default function TicketOverview() {
     };
 
     return (
-        <div>
+        <div className={"ticketOverview"}>
             <Navigationbar/>
 
             <div className={"btnCreateTicketDiv"}>

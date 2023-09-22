@@ -220,7 +220,7 @@
 }
 
 .table tr {
-    height: 40px; /* Ändere diese Zahl entsprechend deinen Anforderungen */
+    height: 40px;
 }
 
 .table tr:hover td {
@@ -230,7 +230,6 @@
 .flex-container {
     display: flex;
     justify-content: center;
-    /*height: 100vh;*/
     text-align: center;
 }
 .pagination {
@@ -258,4 +257,22 @@
     color: white;
     text-align: center;
     vertical-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .ticketOverview {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    .ticketOverview .modal-dialog {
+        margin: 0;
+    }
+
 }

@@ -57,7 +57,7 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
                         <Form.Control
-                            className={"inputField"}
+                            className={"inputFieldLogin"}
                             type="text"
                             value={username} // Use the controlled component approach
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
@@ -67,7 +67,7 @@ export default function ModalLogin({onHide, show}: ModalLoginProps) {
                     <Form.Group controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
                         <Form.Control
-                            className={"inputField"}
+                            className={"inputFieldLogin"}
                             type="password"
                             value={password} // Use the controlled component approach
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}

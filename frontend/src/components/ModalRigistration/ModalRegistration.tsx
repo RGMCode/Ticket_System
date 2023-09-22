@@ -107,7 +107,7 @@ export default function ModalLogin(props: ModalRegProps) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form style={{marginLeft:'110px'}} onSubmit={registration}>
+                    <Form className={"formStyle"} onSubmit={registration}>
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                             <Row>
                                 <Col>

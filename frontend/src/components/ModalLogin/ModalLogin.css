@@ -4,6 +4,17 @@
     color: #369abd;
 }
 
-.inputField {
+.inputFieldLogin {
     width: 720px;
+    background-color: #d1edfd;
+    border: 2px solid #369abd;
+}
+
+@media (max-width: 768px) {
+    .inputFieldLogin {
+        width: 300px !important;
+        background-color: #d1edfd;
+        border: 2px solid #369abd;
+    }
+
 }

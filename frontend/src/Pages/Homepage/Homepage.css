@@ -39,9 +39,15 @@
 }
 
 @keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }
 
 .btnGlowNav-Homepage:hover:before {
@@ -109,14 +115,30 @@
 }
 
 @keyframes rainbow {
-    0% {border-color: red;}
-    14% {border-color: orange;}
-    28% {border-color: yellow;}
-    42% {border-color: green;}
-    57% {border-color: blue;}
-    71% {border-color: indigo;}
-    85% {border-color: violet;}
-    100% {border-color: red;}
+    0% {
+        border-color: red;
+    }
+    14% {
+        border-color: orange;
+    }
+    28% {
+        border-color: yellow;
+    }
+    42% {
+        border-color: green;
+    }
+    57% {
+        border-color: blue;
+    }
+    71% {
+        border-color: indigo;
+    }
+    85% {
+        border-color: violet;
+    }
+    100% {
+        border-color: red;
+    }
 }
 
 .btnNav-Homepage:hover {
@@ -128,8 +150,62 @@
     background-color: #369abd !important;
 }
 
-/* Responsive Design */
+.parallax {
+    margin-top: 30px;
+    background-image: url('../../pictures/RGMCode_Logo_v2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 530px;
+    width: auto;
+}
+
+.break {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #E4F4FF;
+    border-bottom: 3px solid #369abd;
+    border-top: 3px solid #369abd;
+}
+
+.break-item {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+    width: 30vw;
+    height: auto;
+    border-radius: 30px;
+    text-align: center;
+    background-color: #b4def3;
+    border: 3px solid #369abd;
+}
+
+.footer {
+    background-color: #95A5E1;
+    border-top: 3px solid #369abd;
+    border-bottom: 3px solid #369abd;
+}
+
+.footerDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.kontaktDiv {
+    margin: 20px;
+    padding: 20px;
+    background-color: #E4F4FF;
+    text-align: left;
+    border-radius: 25px;
+    border: 3px solid #369abd;
+}
+
 @media (max-width: 768px) {
+
     .navbar-Homepage {
         display: flex;
         justify-content: space-between;
@@ -159,58 +235,46 @@
     .menu-Homepage.open-Homepage {
         display: flex;
     }
-}
 
-.parallax {
-    background-image: url('../../pictures/RGMCode_Logo_v2.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: bottom;
-    height: 730px;
-    width: auto;
-}
 
-.break {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    background-color: #E4F4FF;
-    border-bottom: 3px solid #369abd;
-    border-top: 3px solid #369abd;
-}
+    .break {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background-color: #E4F4FF;
+        border-bottom: 3px solid #369abd;
+        border-top: 3px solid #369abd;
+    }
 
-.break-item {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding: 25px;
-    width: 30vw;
-    height: auto;
-    border-radius: 30px;
-    text-align: center;
-    background-color: #b4def3;
-    border: 3px solid #369abd;
+    .break-item {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-left: 10px;
+        padding: 25px;
+        width: 95%;
+        height: auto;
+        border-radius: 30px;
+        text-align: center;
+        background-color: #b4def3;
+        border: 3px solid #369abd;
+    }
 
-}
+    .footerDiv {
+        flex-direction: column;
+    }
 
-.footer {
-    background-color: #95A5E1;
-    border-top: 3px solid #369abd;
-    border-bottom: 3px solid #369abd;
-}
+    .kontaktDiv {
+        width: 90%;
+    }
 
-.footerDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+    .parallax {
+        background-image: url('../../pictures/RGMCode_Logo_v2.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        height: 200px;
+    }
 
-.kontaktDiv {
-    margin: 20px;
-    padding: 20px;
-    background-color: #E4F4FF;
-    text-align: left;
-    border-radius: 25px;
-    border: 3px solid #369abd;
 }

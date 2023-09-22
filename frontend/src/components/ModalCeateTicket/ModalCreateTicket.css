@@ -8,6 +8,7 @@
     width: 430px;
     background-color: #d0edfd;
     border-radius: 5px;
+    border: 2px solid #369abd;
 }
 
 .inputUnitFieldMCT {
@@ -32,4 +33,24 @@
     background-color: #d0edfd;
     border-radius: 10px 10px 0 10px;
     border: 2px solid #369abd;
+}
+
+@media screen and (max-width: 845px) {
+
+    .inputUnitFieldMCT {
+        width: 430px;
+        margin-left: 0;
+        background-color: #d0edfd;
+        border-radius: 5px;
+        border: 2px solid #369abd;
+    }
+
+    .headlineFieldMCT {
+        width: 430px;
+    }
+
+    .textareaFieldMCT {
+        width: 430px;
+    }
+
 }
